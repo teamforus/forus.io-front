@@ -122,6 +122,52 @@ $colorPrimaryLight: $color_primary_light;
 }
 
 .app {
+    &.app-footer {
+        position: fixed;
+        bottom: 25px;
+        width: 100%;
+        text-align: center;
+
+        .active {
+            border: 1px solid #009EF4;    
+            color: $colorPrimary;
+        }
+
+        .footer-item-wrapper {
+
+            position: relative;
+            display: inline-block;
+            width: 100px;
+            padding: 5px 0px;
+            margin: 0 10px;
+            border-radius: 2px;  
+
+            &:hover:not(.active) {
+                color: white;
+                background-color: #009EF4;
+                box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.1);
+                transition: 0.3s;
+            }
+
+            &:not(:last-child):after {
+                content: '';
+                display: block;
+                bottom: 8px;
+                width: 1px;
+                right: -10px;
+                height: 33%;
+                background: #d4d9dd;
+                position: absolute;
+                border: none;
+            }
+
+            .footer-item {
+                font: 500 14px/20px $bf;
+                color: inherit;
+            }
+        }
+
+    }
     &.app-header {
         padding: 30px 0;
         position: relative;

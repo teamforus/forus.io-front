@@ -1,0 +1,7 @@
+.app.app-footer(ng-if="$root.auth_user")
+    .footer-item-wrapper(ng-class="{'active': $root.appConfigs.panel_type == 'provider'}")
+        a.footer-item(href="{{ $root.appConfigs.frontends.url_provider }}" target="_self") Aanbieder
+    .footer-item-wrapper(ng-class="{'active': $root.appConfigs.panel_type == 'sponsor'}")
+        a.footer-item(href="{{ $root.appConfigs.frontends.url_provider }}" target="_self") Sponsor
+    .footer-item-wrapper(ng-class="{'active': $root.appConfigs.panel_type == 'validator'}")
+        a.footer-item(href="{{ $root.appConfigs.frontends.url_provider }}" target="_self") Validator
