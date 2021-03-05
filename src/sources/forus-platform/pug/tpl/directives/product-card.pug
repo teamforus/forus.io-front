@@ -10,7 +10,7 @@
         .product-action: .product-price(ng-bind="product.price_locale")
         .product-action: .label.label-round.label-lg.label-success(ng-if="!product.expired" translate="product_card.status.active")
         .product-action: .button-group
-            .button.button-defaul(ui-sref="products-show(product)")
+            .button.button-default(ui-sref="products-show(product)")
                 em.mdi.mdi-eye-outline.icon-start
                 | {{ "product_card.buttons.view" | translate }}
             

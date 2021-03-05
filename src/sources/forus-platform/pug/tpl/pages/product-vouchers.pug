@@ -6,7 +6,7 @@
 
         .card(ng-if="$ctrl.vouchers")
             .card-header: .row
-                .col.col-lg-4.col-xs-12: .card-title
+                .col.col-lg-4.col-xs-12: .card-title.text-left
                     span(translate="product_vouchers.header.title") 
                     span(ng-bind="$ctrl.vouchers.meta.total").span-count
             

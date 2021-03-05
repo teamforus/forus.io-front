@@ -101,7 +101,7 @@ body {
             transition: 0.4s;
 
             &:hover {
-                color: #d91d46;
+                color: #305dfb;
                 background: #f6f8f9;
             }
         }
@@ -154,11 +154,10 @@ body {
         .header-organization-switcher {
             width: 290px;
             background: #FFFFFF;
-            box-shadow: 0px 0px 5px rgba(25, 39, 52, 0.22);
+            border: 1px solid #ebedf0;
             border-radius: $borderRadius / 2;
             position: absolute;
             top: 30px;
-            transition: box-shadow .4s;
             overflow: hidden;
 
             .organization-preview {
@@ -168,11 +167,11 @@ body {
 
                 &:hover {
                     .organization-name {
-                        color: #004195;
+                        color: #305dfb;
                     }
                     
                     .organization-switcher-arrow {
-                        border-top: 6px solid #004195;
+                        border-top: 6px solid #305dfb;
                     }
                 }
             }
@@ -246,7 +245,7 @@ body {
                         background-color: #f1f4f7;
 
                         .organization-name {
-                            color: #004195;
+                            color: #305dfb;
                         }
                     }
                 }
@@ -267,7 +266,7 @@ body {
 
                         &:hover {
                             background-color: #f1f4f7;
-                            color: #004195;
+                            color: #305dfb;
                         }
                     }
                 }
@@ -278,11 +277,11 @@ body {
 
                 .organization-preview {
                     .organization-name {
-                        color: #004195;
+                        color: #305dfb;
                     }
 
                     .organization-switcher-arrow {
-                        border-top: 6px solid #004195;
+                        border-top: 6px solid #305dfb;
                         transform: translateY(-50%) rotate(180deg);
                     }
 
@@ -304,7 +303,7 @@ body {
             .notifications-icon {
                 color: $tc;
                 background-color: #fff;
-                box-shadow: 0 5px 15px rgba($color: #000000, $alpha: 0.1);
+                border: 1px solid #ebedf0;
                 border-radius: 50px;
                 width: 36px;
                 height: 36px;
@@ -378,10 +377,10 @@ body {
                             }
 
                             &:hover {
-                                color: #009ef4;
+                                color: #305dfb;
 
                                 .mdi {
-                                    color: #009ef4;
+                                    color: #305dfb;
                                 }
                             }
                         }
@@ -556,7 +555,7 @@ body {
                     height: 50px;
                     border-radius: 50px;
                     background: #fff;
-                    box-shadow: 0 2px 9px rgba(0,0,0,0.1);
+                    border: 1px solid #ebedf0;
                 }
 
                 .auth-user-menu {
@@ -590,7 +589,7 @@ body {
                         &:hover {
                             text-decoration: none;
                             background: #f6f8f9;
-                            color: #d91d46;
+                            color: #305dfb;
 
                             .mdi {
                                 color: $color_primary;
@@ -675,32 +674,15 @@ body {
                 &.active,
                 &:focus,
                 &:hover {
-                    color: #d91d46;
+                    color: #305dfb;
                     text-decoration: none;
                 }
-
-                &:hover:not(.active) {
+                &:hover, &.active {
                     .sidebar-nav-item-icon {
                         img {
                             opacity: 0;
 
-                            &.hover {
-                                opacity: 1;
-                            }
-                        }
-                    }
-                }
-
-                &.active {
-                    .sidebar-nav-item-arrow {
-                        opacity: 1;
-                    }
-
-                    .sidebar-nav-item-icon {
-                        img {
-                            opacity: 0;
-
-                            &.active {
+                            &.hover {        
                                 opacity: 1;
                             }
                         }
@@ -806,7 +788,8 @@ body {
 .card {
     background: #ffffff;
     border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(#000, 0.1);
+    border: 1px solid #ebedf0;
+    box-sizing: border-box;
     margin-bottom: 20px;
 
     .card-header,
@@ -827,7 +810,11 @@ body {
         font: 500 16px/29px $bf;
         color: #282b39;
         cursor: inherit;
-
+        font: 500 18px/34px $bf;
+        text-align: center;
+        &.text-left {
+            text-align: left;
+        }
         .card-collapse {
             float: right;
             font-size: 36px;
@@ -976,7 +963,7 @@ body {
                 .card-section-actions-label {
                     font: 600 11px/18px $bf;
                     text-align: right;
-                    color: #134478;
+                    color: #305dfb;
                     margin: 0 0 5px;
                 }
 
@@ -1008,7 +995,7 @@ body {
         }
 
         &.card-section-primary {
-            background: #f6f9fc;
+            background: #FFF;
         }
 
         &.card-section-success {
@@ -1127,7 +1114,7 @@ body {
             color: #282b39;
 
             .card-block-listing-label {
-                color: $color_primary;
+                color: #646f79;
                 font: 500 11px/20px $bf;
             }
         }
@@ -1159,7 +1146,7 @@ body {
 
             .keyvalue-key {
                 float: left;
-                color: $color_primary;
+                color: #134478;
                 font: 500 13px/20px $bf;
                 width: 210px;
             }
@@ -1176,7 +1163,7 @@ body {
             }
 
             .keyvalue-link {
-                color: #009ef4;
+                color: #305dfb;
                 font: 500 13px/20px $bf;
                 margin-left: 5px;
                 display: inline-block;
@@ -1305,7 +1292,7 @@ body {
         .fund-organization {
             display: inline-block;
             font: 500 14px/20px $bf;
-            color: #009ef4;
+            color: #305dfb;
             margin-bottom: 10px;
             clear: both;
             text-decoration: none;
@@ -1716,7 +1703,7 @@ body {
 
             .card-block-implementation-desc {
                 font: 600 11px/13px $bf;
-                color: #134478;
+                color: #305dfb;
                 padding-top: 15px;
             }
 
@@ -1729,7 +1716,7 @@ body {
                 a {
                     font: 600 13px/16px $bf;
                     text-decoration: underline;
-                    color: #009EF4;
+                    color: #305dfb;
                 }
             }
         }
@@ -3766,7 +3753,7 @@ body {
                             }
 
                             .fund-organization {
-                                color: #009ef4;
+                                color: #305dfb;
                                 margin-bottom: 15px;
                             }
                         }
@@ -3907,7 +3894,7 @@ body {
             border: 1px solid #d2e6ff;
             border-radius: 60px;
             background: #fff;
-            color: #009ef4;
+            color: #305dfb;
             transition: color 0.4s, background-color 0.4s;
 
             .mdi {
@@ -3934,12 +3921,12 @@ body {
             &:hover,
             &.hover {
                 .csv-upload-icon {
-                    background: #009ef4;
+                    background: #305dfb;
                     color: #fff;
                 }
 
                 .csv-upload-text {
-                    color: #009ef4;
+                    color: #305dfb;
                 }
             }
         }
@@ -3997,7 +3984,7 @@ body {
                     right: auto;
                     top: -1px;
                     bottom: -1px;
-                    background: #009ef4;
+                    background: #305dfb;
                     border-radius: 5px;
                     transition: 1s;
                 }
@@ -4076,7 +4063,8 @@ body {
                 display: block;
                 background: #fff;
                 border-radius: 5px;
-                box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.1);
+                border: 1px solid #ebedf0;
+                box-sizing: border-box;
                 transform: translate(0, 0);
                 transition: 0.4s;
 
@@ -4114,16 +4102,23 @@ body {
                     color: #282b39;
                 }
 
-                &.active, &:hover {
-                    background-color: #2166af;
+                &:hover {
+                    background: #dde3fb;
+                    border-color: #4c74ff;
 
                     .organization-name {
-                        color: #fff;
+                        color: #4c74ff;
                     }
                 }
 
                 &.active {
-                    background-color: #134478;
+                    background-color: #fff;
+                    cursor: default;
+                    border-color: #4c74ff;
+
+                    .organization-name {
+                        color: #4c74ff;
+                    }
                 }
             }
         }
@@ -4271,7 +4266,7 @@ body {
                     padding: 10px 0;
 
                     .chart-value_label {
-                        color: $color_primary;
+                        color: #000;
                     }
 
                     .chart-value_value {
@@ -4301,12 +4296,12 @@ body {
                 min-height: 180px;
 
                 .chart-value_value {
-                    color: #007f96;
+                    color: #3561FF;
                     font: 500 26px/32px $bf;
                 }
 
                 .chart-value_label {
-                    color: $color_primary;
+                    color: #000;
                     font: 500 11px/18px $bf;
                 }
 
@@ -4350,7 +4345,7 @@ body {
                 flex-basis: 40%;
 
                 .chart-header-item {
-                    color: rgba($color: #151b26, $alpha: 0.5);
+                    color: $tc;
                     font: 500 14px/34px $bf;
                     display: inline-block;
                     margin-right: 20px;
@@ -4363,7 +4358,7 @@ body {
 
                     &:hover,
                     &.active {
-                        color: #d91d46;
+                        color: #3561FF;
                         font-weight: 500;
                     }
                 }
@@ -4546,7 +4541,7 @@ body {
                     flex-direction: column;
 
                     .form-group {
-                        background: #f6f9fc;
+                        background: #f9f9f9;
                         margin: 0 -20px;
                         padding: 0 15px 0;
 
@@ -4574,7 +4569,7 @@ body {
                                 }
 
                                 &:hover {
-                                    color: #009ef4;
+                                    color: #305dfb;
 
                                     .mdi {
                                         color: inherit;
@@ -4658,7 +4653,7 @@ body {
         }
     
         &.block-information-info {
-            background: #009ef421;
+            background: #305dfb21;
         }
     }
     
@@ -5095,8 +5090,8 @@ body {
             }
     
             &:hover:not(.active) {
+                background-color: #dde3fb;  
                 color: $colorPrimary;
-                box-shadow: 2px 3px 6px 2px rgba(0,0,0,.075);
             }
     
             &.label-tab-text {
@@ -5161,7 +5156,6 @@ body {
             margin-right: 10px;
             display: flex;
             border-radius: inherit;
-            box-shadow: $box_shadow;
     
             &:last-child {
                 margin-right: 0;
@@ -5998,7 +5992,7 @@ body {
     .modal-window {
         position: relative;
         z-index: 2;
-        background: #f6f9fc;
+        background: #f9f9f9;
         width: 1200px;
         max-width: 100%;
         border-radius: 6px;
@@ -6018,7 +6012,7 @@ body {
             top: 20px;
             display: block;
             cursor: pointer;
-            color: #222;
+            color: #000;
             transition: color .4s;
             z-index: 1;
         }
@@ -6109,7 +6103,7 @@ body {
 
                     .funds-amount-sum {
                         font: 600 22px $bf;
-                        color: #009ef4;
+                        color: #305dfb;
                     }
                 }
             }
@@ -6130,7 +6124,7 @@ body {
             cursor: default;
 
             .hero-icon {
-                background-color: #134478;
+                background-color: #305dfb;
                 width: 100px;
                 height: 100px;
                 border: 5px solid #fff;
@@ -6204,7 +6198,7 @@ body {
         padding: 30px;
         width: 1200px;
         max-width: 100%;
-        background: #f7f9fc;
+        background: #fff;
         border-radius: $border_radius;
         min-height: 100px;
         overflow: hidden;
@@ -6505,7 +6499,7 @@ body {
                         }
 
                         &:hover {
-                            color: #009ef4;
+                            color: #305dfb;
                             background: #fff;
                             border-color: #fff;
                             box-shadow: 2px 10px 15px rgba($color: #000000, $alpha: .075);
@@ -7134,40 +7128,6 @@ body {
         padding: 10px 65px;
         text-align: center;
         border-radius: 5px;
-
-        &.button-primary {
-            background: #305dfb;
-            border-color: #305dfb;
-            color: #fff;
-
-            &:hover {
-                background: #4c74ff;
-                border-color: #4c74ff;
-            }
-        }
-
-        &.button-text {
-            &.button-text-primary {
-                color: #305dfb;
-            }
-        }
-
-        &.button-default {
-            background: #282b39;
-            border-color: #282b39;
-            color: #fff;
-
-            &:hover {
-                background: #646f79;
-                border-color: #646f79;
-            }
-        }
-
-        &.button-text {
-            &:hover {
-                color: #305dfb;
-            }
-        }
     }
 
     .form {

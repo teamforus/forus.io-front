@@ -20,9 +20,8 @@
         cursor: default;
         font: 500 12px/20px $bf;
         margin-bottom: 4px;
-        color: $tc;
+        color: #000;
         padding: 0;
-        color: $color_primary;
     }
 
     .form-value {
@@ -103,7 +102,7 @@
         &>input[type=radio]:checked+.form-toggle-inner,
         &>input[type=checkbox]:checked+.form-toggle-inner {
             .toggle-input {
-                background: lighten($colorPrimary, 50);
+                //background: lighten($colorPrimary, 50);
                 border-color: desaturate(lighten($colorPrimary, 50), 20);
 
                 .toggle-input-dot {
@@ -461,7 +460,7 @@
             font: 600 12px/20px $bf;
             margin-bottom: 4px;
             padding: 0;
-            color: $color_primary;
+            color: #000;
             float: left;
 
             &:last-child {

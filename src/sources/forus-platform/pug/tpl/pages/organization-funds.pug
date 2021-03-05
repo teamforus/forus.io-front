@@ -79,7 +79,7 @@
                         on-save-criteria='$ctrl.onSaveCriteria(fund)'
                         validator-organizations="$ctrl.validatorOrganizations.data")
                 
-                .fund-item-section.fund-item-section-warning.fund-item-section-with-arrow(ng-if="fund.show_stats")
+                .fund-item-section.fund-item-section-primary.fund-item-section-with-arrow(ng-if="fund.show_stats")
                     .card-block.card-block-keyvalue.card-block-keyvalue-horizontal.row
                         .keyvalue-item.col.col-lg-3(
                             ng-click="$ctrl.goToEmployeePage(fund)")
@@ -104,7 +104,7 @@
                                 span(ng-bind="fund.requester_count")
                                 span.icon.mdi.mdi-account-multiple-plus(ng-if="fund.canAccessFund") 
             
-                .fund-item-section.fund-item-section-primary(ng-if="fund.show_stats")
+                .fund-item-section(ng-if="fund.show_stats")
                     .card-block.card-block-keyvalue.card-block-keyvalue-horizontal.row
                         .keyvalue-item.col.col-lg-3
                             .keyvalue-key Gestort

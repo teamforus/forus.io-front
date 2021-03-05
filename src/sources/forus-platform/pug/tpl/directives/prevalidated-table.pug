@@ -2,7 +2,7 @@ div
     .card(
         ng-if="prevalidations").form
         .card-header: .row
-            .col.col-lg-6.col-xs-12: .card-title(translate="prevalidated_table.header.title")
+            .col.col-lg-6.col-xs-12: .card-title.text-left(translate="prevalidated_table.header.title")
             .block.block-inline-filters.col.col-lg-6.col-xs-12.text-right
                 .button.button-text(ng-if="filters.show" ng-click="resetFilters()")
                     em.mdi.mdi-close.icon-start

@@ -11,10 +11,10 @@
         position: relative;
         background: #fff;
         margin: 0 0 20px;
-        border-radius: $border_radius / 2;
-        box-shadow: $box_shadow;
+        border-radius: 5px;
+        border: 1px solid #ebedf0;
         cursor: default;
-
+        
         .provider-media {
             display: flex;
             flex-direction: column;
@@ -43,7 +43,7 @@
 
             .provider-subtitle {
                 font: 600 11px/16px $bf;   
-                color: #134478;
+                color: #305dfb;
                 @include ellipsis();
 
                 .tag {

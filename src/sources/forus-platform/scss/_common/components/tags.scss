@@ -1,7 +1,7 @@
 .tag {
     border-radius: 20px;
     color: #fff;
-    font: 600 12px/25px $bf;
+    font: 500 12px/25px $bf;
     padding: 0 10px;
     display: inline-flex;
     margin-bottom: 10px;
@@ -37,19 +37,23 @@
     }
 
     &.tag-success {
-        background: #2cc6ab;
+        background: #cdffc6;
+        color: #00bd00;
     }
 
     &.tag-danger {
-        background: #e63b3b;
+        background: #ffd1ca;
+        color:#ff2100;
     }
 
     &.tag-warning {
-        background: #ff9b00;
+        background: #fff4cf;
+        color: #ff9700;
     }
 
     &.tag-default {
-        background: #8ca3a6;
+        background: #f0f2f4;
+        color: #9ca6b8;
     }
 
     &.tag-text {

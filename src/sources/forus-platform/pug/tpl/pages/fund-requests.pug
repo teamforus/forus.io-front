@@ -81,7 +81,7 @@
                         em.mdi.mdi-circle-off-outline.icon-start
                         | Geweigerd
                 
-                .card-title(ng-class="{'text-muted':!validatorRequest.bsn}")
+                .card-title.text-left(ng-class="{'text-muted':!validatorRequest.bsn}")
                     | BSN: 
                     span(ng-bind="validatorRequest.bsn || 'Geen data'")
                 
@@ -89,7 +89,7 @@
                     .card-block-listing-label Fonds
                     .card-block-listing-value
                         span(ng-bind="validatorRequest.fund.name") 
-                        em.mdi.mdi-information.block.block-tooltip-details(
+                        //-em.mdi.mdi-information.block.block-tooltip-details(
                             ng-click="$ctrl.showFundCriteria($event, validatorRequest)"
                             ng-class="{active: validatorRequest.showCriteria}")
                             .tooltip-content(
@@ -110,7 +110,7 @@
             
             .card-header(ng-hide='validatorRequest.collapsed')
                 .arrow-box.border.bg-dim: .arrow
-                .card-title: .row
+                .card-title.text-left: .row
                     .col.col-lg-6(ng-if="!validatorRequest.is_assigned" translate='validation_requests.labels.records')
                     .col.col-lg-6(ng-if="validatorRequest.is_assigned")
                         .button.button-text(ng-if="validatorRequest.record_types.indexOf('partner_bsn') === -1" ng-click="$ctrl.appendRecord(validatorRequest)")

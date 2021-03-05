@@ -53,7 +53,7 @@
 
         //- funds list
         .card(ng-if="$ctrl.funds.meta.total > 0")
-            .card-header: .card-title: .flex-row
+            .card-header: .card-title.text-left: .flex-row
                 .flex-col Fondsen
                 .flex-col.block.block-inline-filters
                     .form: .form-group: input(type="text" placeholder="Zoeken" ng-model="$ctrl.filters.values.q").form-control

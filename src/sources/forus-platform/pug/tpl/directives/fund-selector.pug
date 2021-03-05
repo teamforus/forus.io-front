@@ -5,5 +5,5 @@
         .organization-item-inner(ng-class="{ 'active' : activeFund.id == fund.id }")
             .organization-logo
                 img(ng-src="{{ fund.logo.sizes.thumbnail || './assets/img/placeholders/fund-thumbnail.png' }}")
-            .organization-name(ng-bind="fund.name")
+            .organization-name(ng-bind="fund.name | str_limit:25")
     br

@@ -5,7 +5,8 @@
 
     .fund-item {
         background: #ffffff;
-        box-shadow: 0px 0px 5px rgba(25, 39, 52, 0.22);
+        border: 1px solid #ebedf0;
+        box-sizing: border-box;
         border-radius: $border_radius / 2;
         margin-bottom: 20px;
         display: flex;
@@ -104,11 +105,11 @@
             }
 
             &.fund-item-section-primary {
-                background: #f6f9fc;
+                background: #f9f9f9;
                 
                 &.fund-item-section-with-arrow {
                     &:after {
-                        border-color: transparent transparent #f6f9fc transparent;
+                        border-color: transparent transparent #f9f9f9 transparent;
                     }
                 }
             }

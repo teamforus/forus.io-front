@@ -19,7 +19,7 @@
             border-radius: 3px;
 
             &.active {
-                border-color: #009ef4;
+                border-color: #2f5bf6;
                 color: $colorPrimary;
                 pointer-events: none;
                 cursor: default;
@@ -27,7 +27,7 @@
 
             &:hover:not(.active) {
                 color: white;
-                background-color: #009ef4;
+                background-color: #2f5bf6;
                 box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.1);
                 transition: 0.3s;
             }

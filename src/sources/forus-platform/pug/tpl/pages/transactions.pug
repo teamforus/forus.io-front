@@ -3,7 +3,7 @@
     section.app.app-content
         .card(ng-if="!$ctrl.empty && $ctrl.empty !== null" class=(state=='closed'?'card-outline':''))
             .card-header: .row
-                .col.col-lg-6.col-xs-12: .card-title
+                .col.col-lg-6.col-xs-12: .card-title.text-left
                     span(i18n="transactions.header.title") 
                     span(ng-bind="$ctrl.transactions.meta.total").span-count
             
@@ -77,8 +77,8 @@
                                 th(i18n="financial_dashboard_transaction.labels.id")
                                 th(i18n="transactions.labels.price")
                                 th(i18n="transactions.labels.date")
-                                th(i18n="transactions.labels.fund")
-                                th(i18n="transactions.labels.provider")
+                                th(i18n="transactions.labels.fund").hidden-xs
+                                th(i18n="transactions.labels.provider").hidden-xs
                                 th(i18n="transactions.labels.status")
                             tr(
                                 ng-repeat="transaction in $ctrl.transactions.data"
@@ -86,8 +86,8 @@
                                 td(ng-bind="transaction.id")
                                 td: a.text-primary-light(ng-bind="transaction.amount | currency_format")
                                 td(ng-bind="transaction.created_at_locale")
-                                td(ng-bind="transaction.fund.name")
-                                td(ng-bind="transaction.organization.name")
+                                td(ng-bind="transaction.fund.name").hidden-xs
+                                td(ng-bind="transaction.organization.name").hidden-xs
                                 td(ng-bind="$ctrl.statesKeyValue[transaction.state]")
                     
             .card-section: .table-pagination

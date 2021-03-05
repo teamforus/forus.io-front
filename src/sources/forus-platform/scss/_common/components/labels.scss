@@ -1,5 +1,5 @@
 .label {
-    font: 600 11px/20px $bf;
+    font: 500 11px/20px $bf;
     display: inline-block;
     padding: 0 7.5px;
     border-radius: $border_radius / 2;
@@ -14,23 +14,23 @@
     }
 
     &.label-success {
-        background: #2cc6ab;
-        color: #fff;
+        background: #cdffc6;
+        color: #00bd00;
     }
 
     &.label-warning {
-        background: #ffae42;
-        color: #fff;
+        background: #fff4cf;
+        color: #ff9700;
     }
 
     &.label-danger {
-        background: #de1442;
-        color: #fff;
+        background: #ffd1ca;
+        color:#ff2100;
     }
 
     &.label-default {
-        background: #8ca3a6;
-        color: #fff;
+        background: #f0f2f4;
+        color: #9ca6b8;
     }
 
     &.label-primary {

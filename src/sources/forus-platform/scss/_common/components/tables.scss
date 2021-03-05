@@ -29,7 +29,7 @@
 
             th {
                 color: #646f79;
-                background: #f6f9fc;
+                background: #f9f9f9;
                 padding-top: 6px;
                 padding-bottom: 6px;
                 font: 500 12px/18px $bf;
@@ -122,7 +122,7 @@
 
             &.dim {
                 td {
-                    background: #f6f9fc;
+                    background: #f9f9f9;
                 }
             }
 
@@ -148,7 +148,25 @@
         }
     }
 }
-
+@media (max-width: 991px) {
+    .table-wrapper {
+        table.table {
+            tr {
+               
+                td,
+                th {
+                    &:first-child {
+                        min-width: 0;
+                        padding-left: 10px;
+                    }
+                    min-width: 0;
+                    padding: 5px;
+                }
+            }
+        }
+        overflow-x:auto;
+    }
+}
 .table-pagination {
     cursor: default;
     @include cf();

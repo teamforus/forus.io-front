@@ -3,8 +3,7 @@
     width: fit-content;
     border-radius: 3px;
     font: 500 13px/20px $bf;
-    padding: 7px 10px;
-    box-shadow: $box_shadow;
+    padding: 7px 10px;  
     border: 1px solid transparent;
     transition: color 0.3s, border-color .3s, background 0.3s, box-shadow 0.3s;
     text-align: center;
@@ -32,7 +31,6 @@
     &:focus,
     &:hover {
         text-decoration: none;
-        box-shadow: 0 10px 15px rgba(#000000, 0.1);
     }
 
     &.button-primary {
@@ -52,7 +50,6 @@
             }
         }
     }
-
 
     &.button-primary-variant {
         color: #2f5bf6;
@@ -81,8 +78,7 @@
     }
 
     &.button-primary-light {
-        background: $color_default_light;
-        border-color: $color_default_light;
+        background: #2b5cff;
         color: #fff;
 
         &>.mdi {
@@ -90,7 +86,7 @@
         }
 
         &:hover {
-            background: #4471a0;
+            background:#557eff;
 
             &>.mdi {
                 color: inherit;
@@ -98,22 +94,17 @@
         }
     }
 
-    &.button-default {
-        background: #ffffff;
-        color: #151b26;
-        border-color: #d4d9dd;
-
-        &>.mdi {
-            color: #646f79;
-        }
+    &.button-primary-outline, &.button-default {
+        color: #2f5bf6;
+        border: 1px solid #2f5bf6;
+        box-shadow: none;
+        background: transparent;
 
         &:hover {
-            background: #f3f4f5;
-            color: $color_primary;
-
-            &>.mdi {
-                color: inherit;
-            }
+            background: #dde3fb;
+            color: #2f5bf6;
+            border: 1px solid #4c74ff;
+            box-shadow: none;
         }
     }
 
@@ -279,9 +270,10 @@
     &.disabled,
     &.button-disabled {
         cursor: default !important;
-        background: #f6f8f9 !important;
-        border-color: #f6f8f9 !important;
-        box-shadow: 0 2px 5px rgba(#000000, 0.1) !important;
+        background: #EFF2F4 !important;
+        border-color:  #EFF2F4 !important;
+        border-radius: 5px;
+        // box-shadow: 0 2px 5px rgba(#000000, 0.1) !important;
         color: #bbc1c6 !important;
         user-select: none !important;
         pointer-events: none !important;
@@ -290,9 +282,37 @@
             background: #f6f8f9 !important;
             border-color: #f6f8f9 !important;
             color: #bbc1c6 !important;
-            box-shadow: 0 1px 2px rgba(#000000, 0.1) !important;
+            //box-shadow: 0 1px 2px rgba(#000000, 0.1) !important;
             transform: none !important;
             top: 0 !important;
+        }
+    }
+}    
+.button {
+    transform: translate(0, 0);
+    text-align: center;
+    border-radius: 5px;     
+
+    &.button-primary {
+        background: #305dfb;
+        border-color: #305dfb;
+        color: #fff;
+
+        &:hover {
+            background: #4c74ff;
+            border-color: #4c74ff;
+        }
+    }
+
+    &.button-text {
+        &.button-text-primary {
+            color: #305dfb;
+        }
+    }
+
+    &.button-text {
+        &:hover {
+            color: #305dfb;
         }
     }
 }
