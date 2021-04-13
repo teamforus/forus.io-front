@@ -4,7 +4,7 @@ let CredentialsService = function() {
         this.activeKey = 'active_account';
 
         this.getAccounts = function() {
-            let accounts = localStorage.getItem(this.storageKey);
+            let accounts = sessionStorage.getItem(this.storageKey);
 
             if (accounts != null && accounts.length > 0) {
                 accounts = JSON.parse(accounts);
@@ -32,7 +32,7 @@ let CredentialsService = function() {
                 type: 'personal',
             });
 
-            localStorage.setItem(this.storageKey, JSON.stringify(accounts));
+            sessionStorage.setItem(this.storageKey, JSON.stringify(accounts));
         };
 
         this.delete = function(access_token) {
@@ -43,14 +43,14 @@ let CredentialsService = function() {
                 );
             });
 
-            localStorage.setItem(this.storageKey, JSON.stringify(accounts));
+            sessionStorage.setItem(this.storageKey, JSON.stringify(accounts));
         };
 
         this.set = function(access_token) {
             if (!access_token)
-                localStorage.removeItem(this.activeKey);
+                sessionStorage.removeItem(this.activeKey);
             else
-                localStorage.setItem(this.activeKey, access_token);
+                sessionStorage.setItem(this.activeKey, access_token);
         };
 
         this.update = function(access_token, name) {
@@ -59,7 +59,7 @@ let CredentialsService = function() {
         };
 
         this.get = function() {
-            return localStorage.getItem(this.activeKey);
+            return sessionStorage.getItem(this.activeKey);
         };
     });
 };
