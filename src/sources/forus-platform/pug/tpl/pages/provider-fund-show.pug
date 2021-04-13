@@ -1,0 +1,53 @@
+.app.app-container
+    menu
+    section.app.app-content
+        //- breadcrumb
+        .block.block-breadcrumbs
+            .breadcrumb-item(ui-sref="provider-funds({organization_id:$ctrl.organization.id})") Fondsen
+            .breadcrumb-item.active(ng-bind="$ctrl.fund.name")
+
+        //- fund details
+        .block.block-provider-fund-show
+            .fund-overview
+                .fund-media: img.fund-media-img(
+                    ng-src="{{ $ctrl.fund.logo ? $ctrl.fund.logo.sizes.large : './assets/img/placeholders/fund-large.png' }}")
+                
+                .fund-details
+                    .fund-name(ng-bind="$ctrl.fund.name")
+                    .fund-organization-name(ng-bind="$ctrl.fund.organization.name")
+                    //-.fund-properties
+                        .fund-property
+                            .fund-property-label(translate="fund_edit.labels.expire")
+                            .fund-property-value(ng-bind="$ctrl.fund.expire_at ? $ctrl.fund.expire_at_locale : 'Onbeperkt'")
+                        .fund-property
+                            .fund-property-label(translate="fund_edit.labels.sold")
+                            .fund-property-value(ng-bind="$ctrl.fund.sold_amount")
+                        .fund-property
+                            .fund-property-label(translate="fund_edit.labels.reserved")
+                            .fund-property-value(ng-bind="$ctrl.fund.reserved_amount")
+                        .fund-property
+                            .fund-property-label(translate="fund_edit.labels.available_offers")
+                            .fund-property-value(ng-if="!$ctrl.fund.unlimited_stock" ng-bind="$ctrl.fund.stock_amount")
+                            .fund-property-value(ng-if="$ctrl.fund.unlimited_stock" translate="fund_edit.labels.unlimited")
+                
+                .fund-actions: .fund-price(ng-bind="$ctrl.fund.price_locale")
+            
+            .fund-description
+                .description-header
+                    | Beschrijving
+                    //-.description-header-action
+                        .button-group
+                            a(ng-click="$ctrl.deletefund($ctrl.fund)").button.button-primary
+                                em.mdi.mdi-delete.icon-start  
+                                | {{ "fund_card.buttons.delete" | translate }}
+                            a(ui-sref="funds-edit($ctrl.fund)").button.button-default
+                                em.mdi.mdi-pen.icon-start  
+                                | {{ "fund_card.buttons.edit" | translate }}
+                
+                .description-body(ng-if="$ctrl.fund.description")
+                    .arrow-box.border.bg-dim: .arrow
+                    div(ng-bind="$ctrl.fund.description")
+                
+                .description-body(ng-if="!$ctrl.fund.description") 
+                    .arrow-box.border.bg-dim: .arrow
+                    | Geen data

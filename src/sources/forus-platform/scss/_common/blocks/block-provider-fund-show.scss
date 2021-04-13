@@ -1,0 +1,196 @@
+&.block-provider-fund-show {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 20px;
+    background: #fff;
+    border-radius: $border_radius / 2;
+    box-shadow: $box_shadow;
+
+    .fund-overview {
+        border-bottom: 1px solid $borderColor;
+        display: flex;
+        flex-direction: row;
+        
+        .fund-media {
+            border-top-left-radius: $border_radius / 2;
+            overflow: hidden;
+
+            .fund-media-img {
+                display: block;
+                width: 190px;
+            }
+        }
+
+        .fund-details {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 25px 25px;
+
+            .fund-name {
+                font: 600 16px/22px $bf;
+                color: #151B26;
+                margin: 0 0 5px;
+            }
+
+            .fund-organization-name {
+                font: 500 12px/18px $bf;
+                color: #151B26;
+                margin: 0 0 15px;
+            }
+
+            .fund-properties {
+                display: flex;
+                flex-direction: row;
+
+                .fund-property {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0 25px;
+                    border-right: 1px solid $borderColor;
+
+                    .fund-property-label {
+                        font: 500 13px/14px $bf;
+                        margin: 0 0 10px;
+                        color: #646F79;
+                    }
+
+                    .fund-property-value {
+                        font: 500 16px/20px $bf;
+                        margin: 0 0 5px;
+                        color: #151B26;
+                    }
+
+                    &:first-child {
+                        padding-left: 0;
+                    }
+
+                    &:last-child {
+                        padding-right: 0;
+                        border-right: none;
+                    }
+                }
+            }
+        }
+
+        .fund-actions {
+            display: flex;
+            flex-direction: column;
+            padding: 25px 25px 25px 0;
+
+            .fund-price {
+                display: flex;
+                flex-grow: 1;
+                flex-direction: column;
+                font: 600 18px/24px $bf;
+                color: #151B26;
+                text-align: right;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: row;
+                align-self: flex-end;
+                justify-self: flex-end;
+
+                &.form-group-inline {
+                    .form-label {
+                        margin: 0;
+                        width: auto;
+                        padding: 0 10px 0 0;
+                        line-height: 24px;
+                    }
+                }
+            }
+
+            .form-toggle {
+                width: auto;
+            }
+        }
+    }
+
+    .fund-description {
+        .description-header {
+            background-color: #f6f9fc;
+            border-bottom: 1px solid $borderColor;
+            padding: 25px;
+            font: 600 16px/28px $bf;
+            color: #282B39;
+            @include cf();
+
+            .description-header-action {
+                display: flex;
+                flex-direction: row;
+                float: right;
+                font: 600 12px/28px $bf;
+
+                .button {
+                    margin: -4px 0 -4px 10px;
+                }
+            }
+        }
+
+        .description-body {
+            padding: 25px;
+            font: 500 14px/20px $bf;
+            color: #646F79;
+            border-bottom: 1px solid $borderColor;
+            cursor: default;
+            position: relative;
+
+            .arrow-box {
+                left: 70px;
+            }
+
+            ul, ol, li, p {
+                font: 400 14px/20px $bf;
+                margin: 0 0 10px;
+            }
+
+            strong, b {
+                font: 600 14px/22px $bf;
+            }
+
+            em, i {
+                font: 600 14px/22px $bf;
+            }
+
+            ul {
+                li {
+                    margin: 0 0 5px;
+
+                    &:before {
+                        content: '•';
+                        float: left;
+                        display: block;
+                        width: 15px;
+                        padding-left: 0px;
+                        padding-right: 10px;
+                        font-size: 2em;
+                        line-height: 18px;
+                    }
+
+                    &:last-child {
+                        margin: 0 0 0;
+                    }
+                }
+            }
+
+            ol {
+                padding-left: 15px;
+                
+                li {
+                    margin: 0 0 5px;
+
+                    &:last-child {
+                        margin: 0 0 0;
+                    }
+                }
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}
