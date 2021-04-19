@@ -18,6 +18,7 @@ app.component('homeComponent', require('./components/HomeComponent'));
 app.component('organizationsEditComponent', require('./components/OrganizationsEditComponent'));
 app.component('organizationFundsComponent', require('./components/OrganizationFundsComponent'));
 app.component('providerFundsComponent', require('./components/ProviderFundsComponent'));
+app.component('providerFundShowComponent', require('./components/ProviderFundShowComponent'));
 app.component('fundsEditComponent', require('./components/FundsEditComponent'));
 app.component('fundsShowComponent', require('./components/FundsShowComponent'));
 app.component('transactionsComponent', require('./components/TransactionsComponent'));

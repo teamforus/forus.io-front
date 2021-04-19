@@ -1,7 +1,8 @@
 let ProviderFundShowComponent = function() {
     let $ctrl = this;
     $ctrl.$onInit = function() {
-        console.log($ctrl.fundProvider)
+        console.log($ctrl.organization)
+        console.log($ctrl.fund)
     };
 };
 
@@ -9,10 +10,8 @@ module.exports = {
     bindings: {
         fund: '<',
         organization: '<',
-        fundProvider: '<',
     },
     controller: [
-        'ProviderFundService',
         ProviderFundShowComponent
     ],
     templateUrl: 'assets/tpl/pages/provider-fund-show.html'

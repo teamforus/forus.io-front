@@ -1109,6 +1109,36 @@ module.exports = ['$stateProvider', '$locationProvider', 'appConfigs', (
         }
     });
 
+    $stateProvider.state({
+        name: "provider-fund-show",
+        url: "/organizations/{organization_id}/fund/{fund_id}?fund_provider_id",
+        component: "providerFundShowComponent",
+        data: {
+            fund_provider_id: null
+        },
+        params: {
+            fund_id: {
+                squash: true,
+                value: null
+            },
+        },
+        resolve: {
+            organization: organziationResolver(),
+            fund: [
+                '$transition$', 'FundService', (
+                    $transition$, FundService
+                ) => {
+                    return repackResponse(
+                        FundService.readPublic(
+                            $transition$.params().organization_id,
+                            $transition$.params().fund_id
+                        )
+                    );
+                }
+            ],
+        }
+    });
+
     // Validators
     $stateProvider.state({
         name: 'csv-validation',

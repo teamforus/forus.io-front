@@ -1,4 +1,4 @@
-.card
+.card(ui-sref="provider-fund-show({organization_id: organization.id, fund_id: fund.id, fund_provider_id: fund.id})")
     .card-section
         .card-block.card-block-fund.card-block-fund-margin-bottom
             .fund-img: img(ng-src="{{ fund.logo.sizes.thumbnail || './assets/img/placeholders/organization-thumbnail.png' }}", alt="")
