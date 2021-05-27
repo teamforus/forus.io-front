@@ -1,1 +1,2 @@
-.block.block-markdownable: .form-group: textarea.markdown-editor.block.block-markdown(editor)
+.block.block-markdownable(ng-class="(allowAlignment ? 'block-markdownable-' + (blockAlignment || 'left') : '')")
+    textarea.markdown-editor.block.block-markdown(editor)

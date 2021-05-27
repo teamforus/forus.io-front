@@ -262,6 +262,7 @@
 
                 .block.block.block-google-map {
                     @include fill_parent();
+                    bottom: 15px;
 
                     iframe {
                         display: block;

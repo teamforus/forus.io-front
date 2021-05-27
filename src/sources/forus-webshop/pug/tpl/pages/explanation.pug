@@ -5,7 +5,9 @@ top-navbar
         .block.block-breadcrumbs
             a(ui-sref="home").breadcrumb-item Home
             .breadcrumb-item.active Uitleg
-        .block-steps-description: .block.block-markdown(ng-bind-html="$ctrl.description_html")
+        .block-steps-description: .block.block-markdown(
+            ng-class="'block-markdown-' + $ctrl.page.content_alignment"
+            ng-bind-html="$ctrl.description_html")
 
     section.section.section-steps#steps(ng-if="!$ctrl.description_html"): .wrapper
         .block.block-breadcrumbs

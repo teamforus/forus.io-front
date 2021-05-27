@@ -660,29 +660,37 @@ module.exports = ['$stateProvider', '$locationProvider', 'appConfigs', function(
         data: { id: null },
         resolve: {
             configs: resolveConfigs(),
-            vouchers: ['AuthService', 'VoucherService', (
-                AuthService, VoucherService
-            ) => AuthService.hasCredentials() ? repackResponse(
-                VoucherService.list()
-            ) : new Promise(resolve => resolve([]))],
             fund: ['$transition$', 'FundService', (
                 $transition$, FundService
             ) => repackResponse(FundService.readById(
                 $transition$.params().id
             ))],
+            loadProducts: ['fund', (fund) => fund.type == 'budget'],
+            loadSubsidies: ['fund', (fund) => fund.type == 'subsidies'],
+            vouchers: ['AuthService', 'VoucherService', (
+                AuthService, VoucherService
+            ) => AuthService.hasCredentials() ? repackResponse(
+                VoucherService.list()
+            ) : new Promise(resolve => resolve([]))],
             recordTypes: ['RecordTypeService', (
                 RecordTypeService
             ) => repackResponse(RecordTypeService.list())],
-            products: ['ProductService', 'fund', 'configs', (
-                ProductService, fund, configs,
-            ) => configs.products.list && fund.type == 'budget' ? repackPagination(
-                ProductService.sample('budget')
-            ) : null],
-            subsidies: ['ProductService', 'fund', 'configs', (
-                ProductService, fund, configs,
-            ) => configs.products.list && fund.type == 'subsidies' ? repackPagination(
-                ProductService.sample('subsidies')
-            ) : null],
+            products: ['$transition$','loadProducts', 'ProductService', (
+                $transition$, loadProducts, ProductService
+            ) => loadProducts ? repackPagination(ProductService.list({
+                fund_type: 'budget',
+                sample: 1,
+                per_page: 6,
+                fund_id: $transition$.params().id,
+            })) : null],
+            subsidies: ['$transition$','loadSubsidies', 'ProductService', (
+                $transition$, loadSubsidies, ProductService
+            ) => loadSubsidies ? repackPagination(ProductService.list({
+                fund_type: 'subsidies',
+                sample: 1,
+                per_page: 6,
+                fund_id: $transition$.params().id,
+            })) : null],
         }
     });
 

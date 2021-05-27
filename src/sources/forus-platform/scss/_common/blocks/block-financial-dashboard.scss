@@ -1,0 +1,201 @@
+&.block-financial-dashboard {
+    .financial-filters {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: -10px;
+
+        .filter-dropdowns {
+            display: flex;
+
+            .filter-dropdown {
+                .filter-dropdown-label {
+                    display: flex;
+                    margin-right: 15px;
+                    position: relative;
+                    cursor: pointer;
+
+                    .filter-dropdown-label-text {
+                        margin-right: 2.5px;
+                        background: #fff;
+                    }
+                }
+
+                .filter-dropdown-menu {
+                    position: absolute;
+                    width: 480px;
+                    top: 60px;
+                    z-index: 99;
+                    border: 1px solid #d4d9dd;
+                    box-shadow: 0px 0px 5px rgba(25, 39, 52, 0.22);
+                    border-radius: $border_radius / 2;
+
+                    .filter-dropdown-menu-header {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        background: #f6f9fc;
+                        border-top-left-radius: inherit;
+                        border-top-right-radius: inherit;
+                        padding: 10px 15px;
+
+                        .header-title {
+                            font: 600 12px/20px $bf;
+                            padding: 5px 0;
+                            color: #292b39;
+                        }
+
+                        .header-search {
+                            input {
+                                height: 30px;
+                                border: 1px solid #d4d9dd;
+                                background-image: url(../img/looking-glass.png);
+                                background-repeat: no-repeat;
+                                background-size: auto 120%;
+                                background-position: 100% 50%;
+                            }
+                        }
+                    }
+
+                    .filter-dropdown-menu-body {
+                        width: 100%;
+                        max-height: 250px;
+                        background: #fff;
+                        border-bottom-left-radius: inherit;
+                        border-bottom-right-radius: inherit;
+                        overflow: auto;
+                        @include webkit_scrollbar();
+
+                        .block-option {
+                            font: 600 13px/15px $bf;
+                            color: #000000;
+                            padding: 10px;
+                            cursor: pointer;
+                            position: relative;
+
+                            .checkbox-label {
+                                font: 600 13px/16px $bf;
+                                color: #646f79;
+    
+                                &.active {
+                                    color: #009ef4;
+                                }
+                            }
+
+                            .block-option-count {
+                                position: absolute;
+                                right: 0;
+                                height: 100%;
+                                top: 0;
+                                padding: inherit;
+                                font: inherit;
+                                color: #646f79;
+                            }
+                        }
+
+                        .block-option-empty {
+                            text-align: center;
+                            font: 700 14px/20px $bf;
+                            padding: 30px 30px;
+                            color: #646f79;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .card-section {
+        border-bottom-color: $borderColor;
+    }
+
+    .financial-totals {
+        display: flex;
+        flex-direction: row;
+        margin: 0 0 20px;
+
+        .financial-totals-col {
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            flex-basis: 33.333%;
+            margin-right: 20px;
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(#000, 0.1);
+            cursor: default;
+    
+            .financial-totals-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid #d4d9dd;
+                padding: 15px 15px;
+    
+                .financial-totals-label {
+                    font: 600 13px/20px $bf;
+                    color: #282b39;
+                    flex-direction: column;
+                    justify-content: center;
+                    display: flex;
+
+                    &:last-child {
+                        text-align: right;
+                    }
+    
+                    &.financial-totals-label-sm {
+                        font: 600 12px/20px $bf;
+                        text-align: right;
+                        color: #8ca3a6;
+                        margin-left: 30px;
+                    }
+                }
+            }
+    
+            .financial-totals-content {
+                display: flex;
+                flex-direction: row;
+                padding: 15px 15px;
+                flex-grow: 1;
+    
+                .financial-totals-value {
+                    font: 600 22px/30px $bf;
+                    color: #000000;
+                    display: flex;
+                    flex-grow: 1;
+                    flex-direction: column;
+                    justify-content: center;
+                    flex-basis: 50%;
+
+                    &:last-child {
+                        text-align: right;
+                        font-size: 20px;
+                    }
+
+                    &.financial-totals-value-sm {
+                        font: 500 12px/18px $bf;
+                        text-align: right;
+                        color: #000000;
+                    }
+                }
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    // refactoring
+    .card-block-table {
+        .organization-logo {
+            width: 25px;
+            height: 25px;
+            border: 4px;
+            vertical-align: middle;
+            border-radius: 25px;
+            margin-right: 10px;
+        }
+    }
+}

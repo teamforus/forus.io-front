@@ -49,6 +49,9 @@ $colorPrimaryLight: $color_primary_light;
     @import 'blocks/block-dashboard-switcher';
     @import 'blocks/block-app_download.scss';
     @import 'blocks/block-app_links.scss';
+    @import 'blocks/block-label-tabs.scss';
+    @import 'blocks/block-timeframe.scss';
+    @import 'blocks/block-financial-dashboard.scss';
     @import 'blocks/block-banner-picker.scss';
     @import 'blocks/block-markdownable.scss';
     @import 'blocks/block-markdown.scss';
@@ -1789,6 +1792,34 @@ body {
     &.card-implementation-edit {
         .card-block-details {
             font: 500 16px/20px $bf;
+        }
+    }
+
+    &.card-block-financial {
+        .table {
+            .table-separator {
+                border-bottom: 2px solid #d4d9dd;
+            }
+
+            .table-highlight td {
+                background: #f6f6f6;
+                font-weight: 600; 
+            }
+
+            .table-highlight-grey td {
+                background: #f6f6f6ad;
+            }
+
+            tr {
+                &.table-totals {
+                    white-space: nowrap;
+                    border-top: 3px solid #134478;
+
+                    td {
+                        font-weight: 600;
+                    }
+                }
+            }
         }
     }
 }
@@ -4269,161 +4300,6 @@ body {
         }
     }
 
-    &.block-charts {
-        .chart-row {
-            display: flex;
-            margin: 0 -10px 20px;
-
-            .card {
-                width: 25%;
-                margin: 0 10px;
-            }
-
-            &.chart-row-condensed {
-                .chart-control {
-                    margin: 0 auto;
-                }
-
-                .chart-radial {
-                    width: 70px;
-                    margin: auto;
-                }
-
-                .chart-value {
-                    min-height: auto;
-                    padding: 10px 0;
-
-                    .chart-value_label {
-                        color: $color_primary;
-                    }
-
-                    .chart-value_value {
-                        color: $color_primary;
-                    }
-                }
-            }
-        }
-
-        .chart-control {
-            margin: -10px 0;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            cursor: default;
-
-            .chart-label {
-                color: #151b26;
-                font: 500 13px/18px $bf;
-                margin-bottom: 20px;
-            }
-
-            .chart-value {
-                padding: 50px 0 20px;
-                display: flex;
-                flex-direction: column;
-                min-height: 180px;
-
-                .chart-value_value {
-                    color: #007f96;
-                    font: 500 26px/32px $bf;
-                }
-
-                .chart-value_label {
-                    color: $color_primary;
-                    font: 500 11px/18px $bf;
-                }
-
-                .chart-value_value_b {
-                    color: #282b39;
-                    font: 500 14px/22px $bf;
-                }
-            }
-                
-            &.chart-control-provider_overview {
-                padding: 5px 0;
-
-                .chart-label {
-                    margin-bottom: 0;
-                }
-
-                .chart-value {
-                    padding: 25px 0 25px;
-                    min-height: auto;
-                }
-            }
-        }
-
-        .chart-body {
-            padding: 20px 0 0;
-            margin: 0 -20px -10px -10px;
-            
-            canvas {
-                margin: 0 auto;
-            }
-        }
-
-        .chart-header {
-            margin: -25px -25px 0;
-            border-bottom: 1px solid #d4d9dd;
-            padding: 15px 25px;
-            display: flex;
-            cursor: default;
-
-            .chart-header-range {
-                flex-basis: 40%;
-
-                .chart-header-item {
-                    color: rgba($color: #151b26, $alpha: 0.5);
-                    font: 500 14px/34px $bf;
-                    display: inline-block;
-                    margin-right: 20px;
-                    transition: 0.4s;
-                    cursor: pointer;
-
-                    &:last-child {
-                        margin-right: 0;
-                    }
-
-                    &:hover,
-                    &.active {
-                        color: #d91d46;
-                        font-weight: 500;
-                    }
-                }
-            }
-
-            .chart-header-title {
-                flex: 1 0px;
-                text-align: center;
-                font: 500 13px/34px $bf;
-                color: #151b26;
-                flex-basis: 20%;
-            }
-
-            .chart-header-actions {
-                flex-basis: 40%;
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
-
-                .flex-row {
-                    flex: 1;
-                    flex-direction: row;
-                    justify-content: flex-end;
-                    flex-wrap: nowrap;
-                }
-
-                .form-group {
-                    margin: 0 10px 0 0;
-                }
-
-                .form-control {
-                    max-width: 200px;
-                }
-            }
-        }
-    }
-
     &.block-file {
         width: 100%;
         border: 1px dashed #d4d9dd;
@@ -5668,6 +5544,161 @@ body {
             .block-login-footer-button {
                 padding: 15px 45px;
                 width: auto;
+            }
+        }
+    }
+
+    &.block-charts {
+        .chart-row {
+            display: flex;
+            margin: 0 -10px 20px;
+
+            .card {
+                width: 25%;
+                margin: 0 10px;
+            }
+
+            &.chart-row-condensed {
+                .chart-control {
+                    margin: 0 auto;
+                }
+
+                .chart-radial {
+                    width: 70px;
+                    margin: auto;
+                }
+
+                .chart-value {
+                    min-height: auto;
+                    padding: 10px 0;
+
+                    .chart-value_label {
+                        color: $color_primary;
+                    }
+
+                    .chart-value_value {
+                        color: $color_primary;
+                    }
+                }
+            }
+        }
+
+        .chart-control {
+            margin: -10px 0;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            cursor: default;
+
+            .chart-label {
+                color: #151b26;
+                font: 500 13px/18px $bf;
+                margin-bottom: 20px;
+            }
+
+            .chart-value {
+                padding: 50px 0 20px;
+                display: flex;
+                flex-direction: column;
+                min-height: 180px;
+
+                .chart-value_value {
+                    color: #007f96;
+                    font: 500 26px/32px $bf;
+                }
+
+                .chart-value_label {
+                    color: $color_primary;
+                    font: 500 11px/18px $bf;
+                }
+
+                .chart-value_value_b {
+                    color: #282b39;
+                    font: 500 14px/22px $bf;
+                }
+            }
+
+            &.chart-control-provider_overview {
+                padding: 5px 0;
+
+                .chart-label {
+                    margin-bottom: 0;
+                }
+
+                .chart-value {
+                    padding: 25px 0 25px;
+                    min-height: auto;
+                }
+            }
+        }
+
+        .chart-body {
+            padding: 20px 0 0;
+            margin: 0 -20px -10px -10px;
+
+            canvas {
+                margin: 0 auto;
+            }
+        }
+
+        .chart-header {
+            margin: -25px -25px 0;
+            border-bottom: 1px solid #d4d9dd;
+            padding: 15px 25px;
+            display: flex;
+            cursor: default;
+
+            .chart-header-range {
+                flex-basis: 40%;
+
+                .chart-header-item {
+                    color: rgba($color: #151b26, $alpha: 0.5);
+                    font: 500 14px/34px $bf;
+                    display: inline-block;
+                    margin-right: 20px;
+                    transition: 0.4s;
+                    cursor: pointer;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    &:hover,
+                    &.active {
+                        color: #d91d46;
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            .chart-header-title {
+                flex: 1 0px;
+                text-align: center;
+                font: 500 13px/34px $bf;
+                color: #151b26;
+                flex-basis: 20%;
+            }
+
+            .chart-header-actions {
+                flex-basis: 40%;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+
+                .flex-row {
+                    flex: 1;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    flex-wrap: nowrap;
+                }
+
+                .form-group {
+                    margin: 0 10px 0 0;
+                }
+
+                .form-control {
+                    max-width: 200px;
+                }
             }
         }
     }

@@ -48,18 +48,18 @@
                                 .form-group
                                     form-label-toggle(label="{{ 'transactions.labels.from' | i18n }}")
                                     datepicker(
-                                        date-format="dd-MM-yyyy" 
+                                        date-format="yyyy-MM-dd" 
                                         datepicker-mobile=""
                                         date-week-start-day="1").form-control
-                                        input(ng-model="$ctrl.filters.values.from" type="text" placeholder="dd-MM-jjjj").form-control
+                                        input(ng-model="$ctrl.filters.values.from" type="text" placeholder="jjjj-MM-dd").form-control
 
                                 .form-group
                                     form-label-toggle(label="{{ 'transactions.labels.to' | i18n }}")
                                     datepicker(
-                                        date-format="dd-MM-yyyy" 
+                                        date-format="yyyy-MM-dd" 
                                         datepicker-mobile="" 
                                         date-week-start-day="1").form-control
-                                        input(ng-model="$ctrl.filters.values.to" type="text" placeholder="dd-MM-jjjj").form-control
+                                        input(ng-model="$ctrl.filters.values.to" type="text" placeholder="jjjj-MM-dd").form-control
                                 
                                 .form-group
                                     form-label-toggle(label="{{ 'transactions.labels.fund_state' | i18n }}")

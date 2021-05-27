@@ -130,7 +130,8 @@ let VoucherComponent = function(
         $ctrl.showPhysicalCardsOption =
             $ctrl.physicalCardIsLinkable() &&
             !$ctrl.voucher.physical_card &&
-            !$ctrl.isPhysicalCardDismissed();
+            !$ctrl.isPhysicalCardDismissed() && 
+            $ctrl.voucherCanUse;
     };
 };
 

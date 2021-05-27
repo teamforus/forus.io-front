@@ -1,0 +1,63 @@
+&.block-timeframes {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #d4d9dd;
+    border-radius: $border_radius / 2;
+    box-shadow: 0px 0px 5px rgba(25, 39, 52, 0.15);
+
+    .timeframe-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 8px 15px;
+        height: 50px;
+        background: #ffffff;
+        border-right: 1px solid #d4d9dd;
+        margin: 0px 0px;
+        font-size: 20px;
+        cursor: pointer;
+        color: #646f79;
+        flex-grow: 1;
+        text-align: center;
+        flex-basis: 1%;
+
+        .mdi {
+            color: inherit;
+        }
+
+        .timeframe-item-title {
+            font: 700 14px/18px $bf;
+            color: inherit;
+        }
+
+        .timeframe-item-subtitle {
+            font: 600 10px/16px $bf;
+            color: inherit;
+        }
+
+        &[disabled], &.timeframe-item-disabled {
+            pointer-events: none;
+            cursor: default;
+            color: #ccc;
+        }
+
+        &:first-child {
+            border-top-left-radius: $border_radius / 2;
+            border-bottom-left-radius: $border_radius / 2;
+            flex-grow: 0;
+        }
+
+        &:last-child {
+            border-top-right-radius: $border_radius / 2;
+            border-bottom-right-radius: $border_radius / 2;
+            border-right: none;
+            flex-grow: 0;
+        }
+
+        &.timeframe-item-active {
+            .timeframe-item-title {
+                color: $color_primary_light;
+            }
+        }
+    }
+}

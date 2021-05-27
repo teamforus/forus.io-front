@@ -22,6 +22,55 @@ let MarkdownDirective = function($scope, $element, $timeout, ModalService) {
         }, 0));
     }
 
+    const AlignButton = (icon = "left") => {
+        return function() {
+            const ui = $.summernote.ui;
+            const btnIcon = `mdi mdi-align-horizontal-${icon}`;
+
+            const makeLabelItem = (text, action, icon = null) => {
+                const inner = [
+                    icon ? `<em class="mdi mdi-${icon}"></em>` : '',
+                    `<span class="note-dropdown-label">${text}</span>`
+                ].join('');
+
+                return `<div data-action="${action}">${inner}</div>`
+            };
+
+            const event = ui.buttonGroup([
+                ui.button({
+                    contents: `<em class="${btnIcon}"/></em>`,
+                    data: {
+                        toggle: 'dropdown'
+                    }
+                }),
+                ui.dropdown({
+                    items: [
+                        makeLabelItem('Tekst links uitlijnen', 'left', 'align-horizontal-left'),
+                        makeLabelItem('Tekst in het midden uitlijnen', 'center', 'align-horizontal-center'),
+                        makeLabelItem('Tekst rechts uitlijnen', 'right', 'align-horizontal-right'),
+                    ],
+                    callback: function(items) {
+
+                        $(items).find('.note-dropdown-item [data-action]').on('click', function(e) {
+                            const option = $(this);
+                            const parent = $(items[0]).parent();
+                            const dropdownBtn = parent.find('.note-btn');
+                            const dropdownBtnIcon = dropdownBtn.find('.mdi');
+                            const direction = option.data('action');
+
+                            dropdownBtnIcon.attr('class', option.find('.mdi').attr('class'));
+
+                            $timeout(() => $scope.blockAlignment = direction, 0);
+                            e.preventDefault();
+                        })
+                    }
+                })
+            ]);
+
+            return event.render();   // return button as jquery object
+        }
+    }
+
     const CmsButton = (type = 'customLink', icon = "link") => {
         return function(context) {
             const ui = $.summernote.ui;
@@ -39,7 +88,7 @@ let MarkdownDirective = function($scope, $element, $timeout, ModalService) {
 
             // create button
             const button = ui.button({
-                contents: `<em class="${btnIcon}"/>`,
+                contents: `<em class="${btnIcon}"/></em>`,
                 // tooltip: 'hello',
                 click: function() {
                     context.invoke('editor.saveRange');
@@ -117,6 +166,9 @@ let MarkdownDirective = function($scope, $element, $timeout, ModalService) {
         styleTags: ['h1', 'h2', 'h3', 'h4', 'p'],
         toolbar: [...[
             ['style', ['style']],
+        ], ...($scope.allowAlignment ? [
+            ['align', ['cmsBlockAlign']],
+        ]: []), ...[
             ['font', ['bold', 'italic', 'clear']],
             ['para', ['ol', 'ul']],
         ], ...($scope.extendedOptions ? [
@@ -128,6 +180,7 @@ let MarkdownDirective = function($scope, $element, $timeout, ModalService) {
             cmsLink: CmsButton('customLink', 'link'),
             cmsMedia: CmsButton('imageLink', 'picture'),
             cmsLinkYoutube: CmsButton('youtubeLink', 'video'),
+            cmsBlockAlign: AlignButton(),
         },
         callbacks: {
             onChange: function(contents, $editable) {
@@ -173,9 +226,11 @@ module.exports = () => {
             value: '=',
             ngModel: '=',
             modal: '=',
+            blockAlignment: '=',
             mediaUploaded: '&',
             disabled: '@',
-            extendedOptions: '='
+            extendedOptions: '=',
+            allowAlignment: '=',
         },
         popover: {
             link: [],

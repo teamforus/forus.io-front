@@ -25,27 +25,39 @@ let ProductApplyComponent = function(
         }
     };
 
-    $ctrl.applyForProduct = (voucher) => {
-        let fund_expire_at = moment(voucher.fund.end_date);
-        let product_expire_at = $ctrl.product.expire_at ? moment($ctrl.product.expire_at) : false;
 
-        let expire_at = product_expire_at && fund_expire_at.isBefore(product_expire_at) ? voucher.last_active_day_locale : $ctrl.product.expire_at_locale;
+    $ctrl.dateParse = (date, date_locale) => {
+        return date ? {
+            unix: moment(typeof date === 'object' ? date.date : date).unix(),
+            locale: date_locale,
+        } : false;
+    };
+
+    $ctrl.applyForProduct = (voucher) => {
+        const dates = [
+            $ctrl.dateParse(voucher.fund.end_date, voucher.fund.end_date_locale),
+            $ctrl.dateParse(voucher.expire_at, voucher.expire_at_locale),
+            $ctrl.dateParse($ctrl.product.expire_at, $ctrl.product.expire_at_locale),
+        ].filter((value) => value);
+
+        dates.sort((a, b) => {
+            if (a.unix != b.unix) {
+                return a.unix < b.unix ? -1 : 1;
+            }
+        });
 
         return ModalService.open('modalProductApply', {
-            expire_at: expire_at,
+            expire_at: dates[0].locale,
             product: $ctrl.product,
             org_name: $ctrl.product.organization.name,
             confirm: () => {
-                return VoucherService.makeProductVoucher(
+                VoucherService.makeProductVoucher(
                     voucher.address,
                     $ctrl.product.id
-                ).then(res => {
-                    $state.go('voucher', res.data.data);
-                }, console.error);
+                ).then(res => $state.go('voucher', res.data.data), console.error);
             }
         });
     };
-
 };
 
 module.exports = {

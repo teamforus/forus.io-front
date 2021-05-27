@@ -105,6 +105,10 @@ let ImplementationCmsEditComponent = function (
         }, {});
     }
 
+    $ctrl.blockAlignmentOnChange = (direction, values, field) => {
+        values[field] = direction;
+    };
+
     $ctrl.$onInit = () => {
         const { informal_communication } = $ctrl.implementation;
 
@@ -141,14 +145,14 @@ let ImplementationCmsEditComponent = function (
                 ...form.values,
                 ...{ overlay_enabled, overlay_type, overlay_opacity, header_text_color }
             }).then(() => {
-                delete $ctrl.form.values.banner_media_uid;
-                form.unlock();
+                delete form.values.banner_media_uid;
+                Object.keys(form.values.pages).forEach((pageKey) => form.values.pages[pageKey].media_uid = []);
+
                 form.errors = [];
+                form.values.media_uid = [];
+                
                 PushNotificationsService.success('Opgeslagen!');
-            }, (res) => {
-                form.unlock();
-                form.errors = res.data.errors;
-            });
+            }, (res) => form.errors = res.data.errors).finally(() => form.unlock());
         }, true);
     };
 };

@@ -34,13 +34,16 @@
 
     ul,
     ol {
-        list-style: disc;
-        margin-bottom: 15px;
+        margin: 0 0 15px;
         padding-left: 18px;
 
         li {
             font: inherit;
         }
+    }
+
+    ul {
+        list-style: disc;
     }
 
     a {
@@ -82,6 +85,30 @@
             width: 100%;
             height: 100%;
             position: absolute;
+        }
+    }
+
+    &.block-markdown-left {
+        text-align: left !important;
+
+        * {
+            text-align: left !important;
+        }
+    }
+
+    &.block-markdown-center {
+        text-align: center !important;
+
+        * {
+            text-align: center !important;
+        }
+    }
+
+    &.block-markdown-right {
+        text-align: right !important;
+
+        * {
+            text-align: right !important;
         }
     }
 }

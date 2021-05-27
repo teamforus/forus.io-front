@@ -870,8 +870,7 @@ module.exports = (core) => {
         'dashboard_general_sponsor',
         'dashboard_general_provider',
         'dashboard_general_validator',
-        'webshop_potjeswijzer',
-        'webshop_groningen'
+        'webshop_general',
     ]);
 
     //- Enable all but given platforms (will ignore: 'core.enableOnly' when used)

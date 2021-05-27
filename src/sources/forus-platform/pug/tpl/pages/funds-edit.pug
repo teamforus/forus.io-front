@@ -1,6 +1,12 @@
 .app.app-container
     menu
     section.app.app-content
+        .block.block-breadcrumbs(ng-if="$root.activeOrganization")
+            .breadcrumb-item(
+                ui-sref="organization-funds({organization_id:$root.activeOrganization.id})" 
+                ng-bind="'Fondsen'")
+            .breadcrumb-item.active(ng-if="$ctrl.fund" ng-bind="$ctrl.fund.name")
+            .breadcrumb-item.active(ng-if="!$ctrl.fund" i18n="funds_edit.header.title_add")
         .card: form(ng-submit="$ctrl.form.submit()").form
             .card-header
                 .card-title(ng-if="!$ctrl.fund" i18n="funds_edit.header.title_add")

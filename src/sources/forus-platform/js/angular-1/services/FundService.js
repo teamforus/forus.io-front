@@ -49,12 +49,8 @@ const FundService = function(ApiRequest, ModalService) {
             return ApiRequest.get(sprintf('/platform/funds/%s', fund_id), query);
         };
 
-        this.readFinances = function(organization_id, fund_id, query = {}) {
-            return ApiRequest.get(sprintf(
-                uriPrefix + '%s/funds/%s/finances',
-                organization_id,
-                fund_id
-            ), query);
+        this.readFinances = function(organization_id, query = {}) {
+            return ApiRequest.get(uriPrefix + `${organization_id}/sponsor/finances`, query);
         };
 
         this.listProviders = function(organization_id, fund_id, state, query = {}) {
@@ -105,7 +101,8 @@ const FundService = function(ApiRequest, ModalService) {
         };
 
         /**
-         * Get provider transactions lsit
+         * TODO: check for cleanup
+         * Get provider transactions list
          * 
          * @param {number} organization_id 
          * @param {number} fund_id 
@@ -128,6 +125,7 @@ const FundService = function(ApiRequest, ModalService) {
         };
 
         /**
+         * TODO: check for cleanup
          * Get provider transaction
          * 
          * @param {number} organization_id 
@@ -154,7 +152,8 @@ const FundService = function(ApiRequest, ModalService) {
         };
 
         /**
-         * Export provider transactions lsit
+         * TODO: check for cleanup
+         * Export provider transactions list
          * 
          * @param {number} organization_id 
          * @param {number} fund_id 
@@ -173,6 +172,47 @@ const FundService = function(ApiRequest, ModalService) {
                 organization_id,
                 fund_id,
                 provider_id
+            ), query, {}, true, (_cfg) => {
+                _cfg.responseType = 'arraybuffer';
+                _cfg.cache = false;
+
+                return _cfg;
+            });
+        };
+
+        /**
+         * Export funds data
+         * 
+         * @param {number} organization_id 
+         * @param {number} fund_id 
+         * @param {number} provider_id 
+         * @param {object} query 
+         * @returns {Promise}
+         */
+        this.financialOverview = function(organization_id, query = {}) 
+        {
+            return ApiRequest.get(sprintf(
+                uriPrefix + '%s/sponsor/finances-overview', 
+                organization_id
+            ), query);
+        };
+
+        /**
+         * Export funds data
+         * 
+         * @param {number} organization_id 
+         * @param {number} fund_id 
+         * @param {number} provider_id 
+         * @param {object} query 
+         * @returns {Promise}
+         */
+         this.financialOverviewExport = function(
+            organization_id,
+            query = {}
+        ) {
+            return ApiRequest.get(sprintf(
+                uriPrefix + '%s/sponsor/finances-overview-export', 
+                organization_id
             ), query, {}, true, (_cfg) => {
                 _cfg.responseType = 'arraybuffer';
                 _cfg.cache = false;

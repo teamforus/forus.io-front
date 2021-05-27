@@ -1,28 +1,44 @@
-FROM node:carbon
+### STAGE 1: Build ###    
+# We label our stage as 'builder'
+FROM node:13-alpine as builder
 
-WORKDIR /usr/src/app
+RUN apk update \
+    && apk --no-cache --virtual build-dependencies add \
+    python \
+    make \
+    g++
 
-# Bundle app source
-ADD https://github.com/teamforus/forus-frontend/archive/v0.0.3.tar.gz /usr/src/forus-frontend/
-RUN tar -zxvf /usr/src/forus-frontend/v0.0.3.tar.gz -C /usr/src/forus-frontend
+COPY src/package.json src/package-lock.json ./
 
-RUN mv  /usr/src/forus-frontend/forus-frontend-0.0.3/src /usr/src/app/src
-RUN rm  /usr/src/forus-frontend/ -R
+RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 
-COPY run.sh ./
+## Storing node modules on a separate layer will prevent 
+## unnecessary npm installs at each build
+RUN npm i --force && mkdir -p -- /ng-app/src/node_modules && cp -RT ./node_modules ./ng-app/src/node_modules
+RUN npm install gulp-cli -g
 
-EXPOSE 8080
+WORKDIR /ng-app
 
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install mc nano -y
+COPY . .
 
-RUN npm i npm@latest -g
-RUN npm i gulp@latest -g
-RUN npm install http-server@latest -g
-RUN cd /usr/src/app/src && npm install && gulp init && gulp compile && cd ..
+## Build the angular app in production mode and store the artifacts in dist folder
+RUN cd src && gulp init && gulp compile
 
-RUN ./run.sh
+### STAGE 2: Setup ###
 
-RUN ls
+FROM nginx:1.20.0-alpine
 
-CMD [ "http-server" ]
+## Copy our default nginx config
+COPY nginx/default.conf /etc/nginx/conf.d/
+
+## Remove default nginx website
+RUN rm -rf /usr/share/nginx/html/*
+
+## From 'builder' stage copy over the artifacts in dist folder 
+## to default nginx public folder
+COPY --from=builder /ng-app/dist/forus-webshop-general.panel /usr/share/nginx/general
+COPY --from=builder /ng-app/dist/forus-platform.provider.general /usr/share/nginx/general/provider
+COPY --from=builder /ng-app/dist/forus-platform.validator.general /usr/share/nginx/general/validator
+COPY --from=builder /ng-app/dist/forus-platform.sponsor.general /usr/share/nginx/general/sponsor
+
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,5 +1,5 @@
 let TermsAndConditionsComponent = function($sce) {
-    let $ctrl = this;
+    const $ctrl = this;
 
     $ctrl.$onInit = () => {
         $ctrl.description_html = $sce.trustAsHtml($ctrl.page.content_html);

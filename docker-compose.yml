@@ -3,4 +3,4 @@ services:
   web:
     image: teamforus/forus-frontend
     ports:
-      - "4000:4000"
+      - "4000:80"

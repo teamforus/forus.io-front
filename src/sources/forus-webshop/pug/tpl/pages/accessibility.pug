@@ -4,7 +4,11 @@ section.section.section-details: .wrapper
     .block.block-breadcrumbs
         a(ui-sref="home").breadcrumb-item Home
         .breadcrumb-item.active(i18n="Toegankelijkheidsverklaring")
-    .block.block-markdown(ng-if="$ctrl.description_html" ng-bind-html="$ctrl.description_html")
+
+    .block.block-markdown(
+        ng-class="'block-markdown-' + $ctrl.page.content_alignment"
+        ng-if="$ctrl.description_html" 
+        ng-bind-html="$ctrl.description_html")
 
     .section-title.text-left(ng-if="!$ctrl.description_html" translate="Toegankelijkheidsverklaring")
     .block.block-accessibility(ng-if="!$ctrl.description_html")

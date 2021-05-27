@@ -40,18 +40,6 @@ aside.app.app-sidebar(ng-if="$root.activeOrganization")
                 'product_vouchers')
 
         +nav_item(
-            "Transacties", "transactions", 'transactions', 
-            '{organization_id: $root.activeOrganization.id}', 
-            '$root.activeOrganization | hasPerm:["view_finances"]',
-            'transactions')
-
-        +nav_item(
-            "Financiën", "financial_dashboard", 'financial-dashboard', 
-            '{organization_id: $root.activeOrganization.id}',
-            '$root.activeOrganization | hasPerm:["view_finances"]',
-            'financial_dashboard')
-
-        +nav_item(
             "Medewerkers", "list", 'employees', 
             '{organization_id: $root.activeOrganization.id}',
             '$root.activeOrganization | hasPerm:["manage_employees"]',
@@ -73,6 +61,28 @@ aside.app.app-sidebar(ng-if="$root.activeOrganization")
             '{organization_id: $root.activeOrganization.id}',
             '$root.activeOrganization | hasPerm:["manage_organization"]')
         
+        .sidebar-section-title(
+            ng-if="$root.activeOrganization | hasPerm:['view_finances']:false" 
+            translate="menu.financial")
+        
+        +nav_item(
+            "Overzicht", "financial_dashboard_overview", 'financial-dashboard-overview', 
+            '{organization_id: $root.activeOrganization.id, state: "overview"}',
+            '$root.activeOrganization | hasPerm:["view_finances"]',
+            'financial_dashboard')
+
+        +nav_item(
+            "Statistieken", "financial_dashboard", 'financial-dashboard', 
+            '{organization_id: $root.activeOrganization.id}',
+            '$root.activeOrganization | hasPerm:["view_finances"]',
+            'financial_dashboard')
+
+        +nav_item(
+            "Transacties", "transactions", 'transactions', 
+            '{organization_id: $root.activeOrganization.id}', 
+            '$root.activeOrganization | hasPerm:["view_finances"]',
+            'transactions')
+
         .sidebar-section-title(
             ng-if="$root.activeOrganization | hasPerm:['manage_implementation', 'manage_implementation_cms']:false" 
             translate="menu.implementation")

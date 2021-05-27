@@ -39,6 +39,7 @@ module.exports = {
     menu: {
         organizational: 'Organisatie',
         implementation: 'Webshop',
+        financial: 'Financieel',
         personal: 'Persoonlijk',
     },
     // MODALS
@@ -296,7 +297,7 @@ module.exports = {
     // FINANCIAL DASHBOARD = financial-dashboard-transaction.pug
     financial_dashboard: {
         header: {
-            title: "Je bekijkt nu het financiële dashboard van: ",
+            title: "Financieel statistieken",
         },
         labels: {
             product: "Fietsen, Computers",
@@ -338,6 +339,30 @@ module.exports = {
             fee: "€ 0.10",
             date: "Datum",
         },
+    },
+
+    financial_dashboard_overview: {
+        header: {
+            title: "Financieel overzicht",
+        },
+        labels: {
+            funds: "Fonds",
+            fund_name: "Fondsnaam",
+            total_budget: "Totaal gestort",
+            current_budget: "Huidig saldo",
+            used_budget: "Uitgaven",
+            transaction_costs: "Transactiekosten",
+            total: "Totaal",
+            active: "Actief",
+            inactive: "Inactief",
+            used: "Uitgaven",
+            left: "Restant",
+            total_percentage: "Totaal percentage",
+            total_count: "Totaalaantal"
+        },
+        buttons: {
+            export: "Exporteren"
+        }
     },
 
     // EDIT IMPLEMENTATION = implementation-edit.pug
@@ -1303,40 +1328,17 @@ module.exports = {
             nocategories: "Geen Categorieën",
         },
     },
-
-    // FINANCIAL FUNDS FOR PROVIDERS = fund-card-provider-finances.pug
+    // FUND CARD FOR PROVIDERS = fund-card-provider.pug
     fund_card_provider_finances: {
         status: {
-            accepted: "Geaccepteerd",
-            rejected: "Geweigerd",
-            hold: "In behandeling",
+            hold: "Wachten",
         },
         labels: {
-            mail: "E-mail",
-            categories: "Categorieën",
-            nocategories: "Geen categorieën",
-            join: "Aanmelding voor fonds",
-            year: "Jaar",
-            quarter: "Kwartaal",
-            month: "Maand",
-            week: "Week",
-            all: "Alles",
-            usage: "omzet",
-            average: "Gemiddelde transactiegrootte",
-            transaction: "transacties",
-            price: "BEDRAG",
-            date: "DATUM",
-            status: "STATUS",
-            share: "Aandeel van fonds (totaal)",
+            price: "Bedrag",
+            date: "Datum",
+            status: "Status",
         },
-        buttons: {
-            view: "Bekijk statistieken",
-            transactions: "Transacties",
-            previous: "Vorige",
-            next: "Volgende",
-        }
     },
-
     // FUND CARD FOR PROVIDERS = fund-card-provider.pug
     fund_card_provider: {
         status: {

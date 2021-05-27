@@ -529,32 +529,36 @@ module.exports = ['$stateProvider', '$locationProvider', 'appConfigs', (
 
     $stateProvider.state({
         name: "financial-dashboard",
-        url: "/organizations/{organization_id}/financial-dashboard/funds?fund_id",
+        url: "/organizations/{organization_id}/financial-dashboard",
         component: "financialDashboardComponent",
-        params: {
-            fund_id: null,
-        },
         resolve: {
             organization: organziationResolver(),
             permission: permissionMiddleware('financial-dashboard', 'view_finances'),
-            fund: ['permission', '$transition$', 'FundService', (
-                permission, $transition$, FundService
-            ) => {
-                return $transition$.params().fund_id != null ? repackResponse(FundService.read(
-                    $transition$.params().organization_id,
-                    $transition$.params().fund_id
-                )) : new Promise((res) => res(null));
+            options: ['permission', 'organization', 'FundService', (permission, organization, FundService) => {
+                return permission ? FundService.readFinances(organization.id, {
+                    filters: 1,
+                }).then(res => res.data.filters) : null;
             }],
+        }
+    });
+
+    $stateProvider.state({
+        name: "financial-dashboard-overview",
+        url: "/organizations/{organization_id}/financial-dashboard/overview",
+        component: "financialDashboardOverviewComponent",
+        resolve: {
+            permission: permissionMiddleware('financial-dashboard', 'view_finances'),
+            organization: organziationResolver(),
             funds: ['permission', '$transition$', 'FundService', (
                 permission, $transition$, FundService
-            ) => repackResponse(FundService.list(
+            ) => permission ? repackPagination(FundService.list(
                 $transition$.params().organization_id
-            ))],
-            productCategories: ['ProductCategoryService', (
-                ProductCategoryService
-            ) => repackResponse(ProductCategoryService.list({
-                parent_id: 'null'
-            }))]
+            )) : null],
+            fundsFinancialOverview: ['permission', '$transition$', 'FundService', (
+                permission, $transition$, FundService
+            ) => permission ? repackPagination(FundService.financialOverview(
+                $transition$.params().organization_id
+            )) : permission],
         }
     });
 
@@ -751,7 +755,7 @@ module.exports = ['$stateProvider', '$locationProvider', 'appConfigs', (
         /**
          * Voucher details
          */
-         $stateProvider.state({
+        $stateProvider.state({
             name: "vouchers-show",
             url: "/organizations/{organization_id}/vouchers/{voucher_id}",
             component: "vouchersShowComponent",
@@ -763,8 +767,8 @@ module.exports = ['$stateProvider', '$locationProvider', 'appConfigs', (
                     function(permission, $transition$, VoucherService) {
                         return repackResponse(
                             VoucherService.show(
-                                $transition$.params().organization_id, 
-                                $transition$.params().voucher_id, 
+                                $transition$.params().organization_id,
+                                $transition$.params().voucher_id,
                             )
                         );
                     }

@@ -39,6 +39,8 @@
                         extended-options="true"
                         value="$ctrl.form.values.description_html" 
                         ng-model="$ctrl.form.values.description"
+                        allow-alignment="true"
+                        block-alignment="$ctrl.form.values.description_alignment"
                         media-uploaded="$ctrl.appendMedia(media_uid, $ctrl.form.values)")
                     .form-error(ng-repeat="error in $ctrl.form.errors.description" ng-bind="error")
 
@@ -83,7 +85,9 @@
                             markdown(
                                 extended-options="true"
                                 value="$ctrl.form.values.pages[key].content_html" 
-                                ng-model="$ctrl.form.values.pages[key].content" 
+                                ng-model="$ctrl.form.values.pages[key].content"
+                                allow-alignment="true"
+                                block-alignment="$ctrl.form.values.pages[key].content_alignment"
                                 media-uploaded="$ctrl.appendMedia(media_uid, $ctrl.form.values.pages[key])")
 
                         tooltip(text="'implementation_edit.tooltips.' + key | translate")

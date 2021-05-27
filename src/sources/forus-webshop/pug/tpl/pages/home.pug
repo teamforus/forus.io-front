@@ -21,7 +21,9 @@ main(id="main")
                 h1.header-title(ng-if="!$ctrl.appConfigs.features.settings.title" translate="home.header.{{ $root.client_key }}.title" translate-default="{{ 'home.header.title' | translate:{ implementation: $ctrl.implementation_name } }}")
 
                 .header-description#desc(ng-if="$ctrl.appConfigs.features.settings.description")
-                    .block.block-markdown(ng-bind-html="$ctrl.description_html")
+                    .block.block-markdown(
+                        ng-class="'block-markdown-' + $ctrl.appConfigs.features.settings.description_alignment" 
+                        ng-bind-html="$ctrl.description_html")
 
                 .header-description#desc(ng-if="!$ctrl.appConfigs.features.settings.description && !$ctrl.digidAvailable")
                     p(ng-if="$ctrl.funds.length <= 1" translate="home.header.{{ $root.client_key }}.subtitle" translate-default="{{'home.header.subtitle' | translate:{ fund: $ctrl.funds[0].name, start_date: $ctrl.funds[0].start_date_locale } }}" i18n-vars="{ fund: $ctrl.funds[0].name, start_date: $ctrl.funds[0].start_date_locale }")

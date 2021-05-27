@@ -48,7 +48,6 @@ let FundProviderProductSubsidyEditComponent = function(
             amount: 0,
             gratis: false,
         };
-
         
         $ctrl.deal = deal;
         $ctrl.loaded = true;

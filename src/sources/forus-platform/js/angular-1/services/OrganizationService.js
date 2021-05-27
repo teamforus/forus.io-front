@@ -97,6 +97,22 @@ module.exports = [
                 ), query);
             };
 
+            this.financeProviders = function(organization_id, query = {}) {
+                return ApiRequest.get(sprintf(
+                    '/platform/organizations/%s/sponsor/providers/finances',
+                    organization_id
+                ), query);
+            };
+
+            this.financeProvidersExport = function(organization_id, query = {}) {
+                return ApiRequest.get(sprintf(
+                    '/platform/organizations/%s/sponsor/providers/finances-export',
+                    organization_id
+                ), query, {}, true, (_cfg) => {
+                    return { ..._cfg, ...{ responseType: 'arraybuffer', cache: false } };
+                });
+            };
+
             this.providerOrganizationsExport = function(organization_id, query = {}) {
                 return ApiRequest.get(sprintf(
                     '/platform/organizations/%s/sponsor/providers/export',

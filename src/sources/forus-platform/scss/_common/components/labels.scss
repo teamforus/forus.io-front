@@ -6,11 +6,16 @@
     cursor: default;
 
     .label-close {
-        color: #fff;
+        color: inherit;
         float: left;
         font-size: 14px;
         margin: 0 2.5px 0 -2.5px;
         cursor: pointer;
+
+        &:last-child {
+            float: right;
+            margin: 0 -2.5px 0 2.5px;
+        }
     }
 
     &.label-success {
@@ -39,8 +44,8 @@
     }
 
     &.label-primary-light {
-        background: $color_primary_light;
-        color: #fff;
+        background: #e1efff;
+        color: $color_primary;
     }
 
     &.label-sm {
