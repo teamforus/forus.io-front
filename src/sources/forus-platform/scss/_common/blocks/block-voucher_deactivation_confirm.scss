@@ -1,0 +1,44 @@
+&.block-voucher_deactivation_confirm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+
+    .danger_zone-title {
+        width: 100%;
+        border: 1px solid $bec;
+        border-radius: 3px;
+        font: 600 16px/20px $bf;
+        padding: 15px;
+        color: #282B39;
+        background: #FCFAF6;
+
+        .mdi {
+            float: left;
+            color: $bec;
+            font-size: 20px;
+            line-height: 20px;
+            margin: 0 10px 0 0;
+        }
+    }
+
+    .danger_zone-description {
+        font: 500 14px/20px $bf;
+        color: #646F79;
+        width: 100%;
+        margin-top: 25px;
+
+        .form-group{
+            margin-top: -10px;
+            .checkbox{
+                input {
+                    margin-left: 0;
+                }
+                label{
+                    margin-left: 10px;
+                }
+            }
+        }
+
+    }
+}

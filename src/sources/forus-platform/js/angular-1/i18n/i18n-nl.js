@@ -55,6 +55,8 @@ module.exports = {
         danger_zone: {
             remove_external_validators: require('./nl/modals/danger-zone/remove-external-validator')
         },
+        modal_voucher_deactivate: require('./nl/modals/modal-voucher_deactivate.pug.i18n'),
+        modal_voucher_deactivation_confirm: require('./nl/modals/modal-voucher_deactivation_confirm.pug.i18n'),
     },
     // PAGES
     vouchers: require('./nl/pages/vouchers.pug.i18n'),

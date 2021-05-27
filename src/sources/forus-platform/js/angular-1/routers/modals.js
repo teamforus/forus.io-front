@@ -125,4 +125,10 @@ module.exports = ['ModalRouteProvider', function(ModalRouteProvider) {
     ModalRouteProvider.modal('physical_card', {
         component: 'modalPhysicalCardComponent'
     });
+    ModalRouteProvider.modal('voucher_deactivate', {
+        component: 'modalVoucherDeactivateComponent'
+    });
+    ModalRouteProvider.modal('voucher_deactivation_confirm', {
+        component: 'modalVoucherDeactivationConfirmComponent'
+    });
 }];

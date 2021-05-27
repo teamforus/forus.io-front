@@ -28,6 +28,10 @@
                     .tag.tag-default.tag-sm(
                         ng-if="$ctrl.voucher.state == 'pending'" 
                         translate="vouchers.labels.pending")
+
+                    .tag.tag-default.tag-sm(
+                        ng-if="$ctrl.voucher.state == 'deactivated' && !$ctrl.voucher.expired" 
+                        translate="vouchers.labels.deactivated")
                     
                     .tag.tag-warning.tag-sm(
                         ng-if="$ctrl.voucher.expired" 
@@ -110,6 +114,10 @@
                                     br
                                     em.mdi.mdi-close.text-black
                                     strong(translate="product_vouchers.labels.yes").text-black
+            .card-section(ng-if=" $ctrl.voucher.state != 'pending'")
+                .card-block
+                    button.button.button-primary(ng-if="$ctrl.voucher.state == 'deactivated'" ng-click="$ctrl.reactivate()" translate="vouchers.buttons.activate")
+                    button.button.button-primary(ng-if="$ctrl.voucher.state != 'deactivated' && $ctrl.voucher.state != 'pending'" ng-click="$ctrl.deactivate()" translate="vouchers.buttons.deactivate")
 
         .card(ng-if="$ctrl.voucher.note")
             .card-section

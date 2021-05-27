@@ -1,0 +1,33 @@
+- var src_prefix = (qdt_c.platform.env_data.html5ModeEnabled?qdt_c.platform.env_data.html5Mode.basePath:'');
+
+.modal.modal-md
+    .modal-backdrop(ng-click="$ctrl.close()")
+    .modal-window
+        .modal-body: .modal-section
+            .block.block-voucher_deactivation_confirm
+                .danger_zone-title
+                    em.mdi.mdi-alert
+                    span(translate="modals.modal_voucher_deactivation_confirm.title")
+                .danger_zone-description(ng-if="$ctrl.voucher.identity_email")
+                    div(
+                        translate="modals.modal_voucher_deactivation_confirm.notification.description"
+                        translate-values="{ fund_name: $ctrl.voucher.fund.name, email: $ctrl.voucher.identity_email }"
+                    )           
+                .danger_zone-description
+                    div(translate="modals.modal_voucher_deactivation_confirm.reason_label")             
+                    div: strong {{ $ctrl.deactivation_reason }}
+                .danger_zone-description(ng-if="$ctrl.voucher.identity_email")
+                    .form-group.form-group-inline
+                        label.checkbox
+                            input(id="notification" type='checkbox' ng-model="$ctrl.form.values.notification")
+                            label.form-label(
+                                for="notification"
+                                translate="modals.modal_voucher_deactivation_confirm.notification.label"
+                                translate-values="{ email: $ctrl.voucher.identity_email }"
+                            )
+                .danger_zone-description
+                    div(translate="modals.modal_voucher_deactivation_confirm.confirmation_text") 
+
+        .modal-footer
+            .button.button-default(ng-click="$ctrl.close()" translate="modals.modal_voucher_deactivation_confirm.buttons.cancel")
+            .button.button-danger(ng-click="$ctrl.form.submit()" translate="modals.modal_voucher_deactivation_confirm.buttons.submit")

@@ -28,6 +28,7 @@ module.exports = {
         source_user: "Gebruiker",
         active: 'Actief',
         pending: 'Inactief',
+        deactivated: 'Gedeactiveerd',
         uid: 'Uniek nummer',
         physical_card: "Pasnummer",
         bsn: "Burgerservicenummer",
@@ -41,7 +42,8 @@ module.exports = {
         clear_filter: "Wis filter",
         physical_card_add: "Plastic pas koppelen",
         physical_card_delete: "Pas blokkeren",
-        activate: "Activeren"
+        activate: "Activeren",
+        deactivate: "Deactiveren"
     },
     csv: {
         default_note: "Aangemaakt op {{ upload_date }} door {{ uploader_email }}, toegekend aan {{ target_email }}",

@@ -163,9 +163,9 @@
                                         span.text-md.text-muted-dark Verlopen               
                                     .td-boolean(ng-if="!voucher.expired")
                                         em(ng-if="voucher.state === 'active'").mdi.mdi-check-circle
-                                        em(ng-if="voucher.state === 'pending'").mdi.mdi-close
+                                        em(ng-if="voucher.state === 'pending' || voucher.state === 'deactivated'").mdi.mdi-close
                                         span.block.block-tooltip-details.block-tooltip-hover.text-md.text-muted-dark 
-                                            | {{ ( voucher.state === 'active' ? 'Actief' : 'Inactief' ) }}
+                                            | {{ ( voucher.state === 'active' ? 'Actief' : (voucher.state === 'deactivated' ? 'Gedeactiveerd' : 'Inactief')) }}
                                             .tooltip-content.tooltip-content-left.tooltip-content-fit
                                                 .tooltip-text
                                                     span
@@ -194,7 +194,7 @@
                                                         span(ng-bind="voucher.physical_card.code || 'Nee'").text-strong                                                    
                                 td: .button-group.flex-end
                                     button.button.button-default.button-icon.pull-right(
-                                        ng-if="!$ctrl.fundClosed && !voucher.is_granted && !voucher.expired"
+                                        ng-if="!$ctrl.fundClosed && !voucher.is_granted && !voucher.expired && voucher.state !== 'deactivated'"
                                         ng-click="$ctrl.showQrCode($event, voucher)")
                                         em(ng-if="voucher.state === 'active'").mdi.mdi-qrcode 
                                         em(ng-if="voucher.state === 'pending'").mdi.mdi-bookmark

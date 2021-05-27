@@ -60,6 +60,20 @@ module.exports = [
                 ].join(''));
             };
 
+            this.deactivate = (organization_id, voucher_id, query) => {
+                return ApiRequest.patch([
+                    '/platform/organizations/' + organization_id,
+                    '/sponsor/vouchers/' + voucher_id + '/deactivate',
+                ].join(''), query);
+            };
+
+            this.reactivate = (organization_id, voucher_id, query) => {
+                return ApiRequest.patch([
+                    '/platform/organizations/' + organization_id,
+                    '/sponsor/vouchers/' + voucher_id + '/reactivate',
+                ].join(''), query);
+            };
+
             this.makeActivationCode = (organization_id, voucher_id) => {
                 return ApiRequest.patch([
                     '/platform/organizations/' + organization_id,

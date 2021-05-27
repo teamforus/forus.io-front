@@ -55,6 +55,7 @@ $colorPrimaryLight: $color_primary_light;
     @import 'blocks/block-banner-picker.scss';
     @import 'blocks/block-markdownable.scss';
     @import 'blocks/block-markdown.scss';
+    @import 'blocks/block-voucher_deactivation_confirm.scss';
 }
 
 
@@ -6139,6 +6140,12 @@ body {
                 margin: 0 0 10px;
             }
 
+            .modal-subtitle {
+                font: 600 16px/26px $bf;
+                color: #646f79;
+                margin: 0 0 10px;
+            }
+
             .modal-text {
                 font: 500 14px/20px $bf;
                 color: #646f79;
@@ -6399,6 +6406,18 @@ body {
                             width: 100%;
                         }
                     }
+                }
+            }
+        }
+    }
+
+    &.modal-voucher_deactivate {
+        .modal-window {
+            width: 680px;
+
+            .modal-body {
+                .modal-section {
+                    padding: 65px 40px 30px 40px;
                 }
             }
         }

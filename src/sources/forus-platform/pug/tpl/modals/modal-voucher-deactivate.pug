@@ -1,0 +1,17 @@
+.modal.modal-md.modal-animated(ng-class="[$ctrl.modal.scope.modalClass, $ctrl.modalClass, $ctrl.modal.loaded ? '' : 'modal-loading']")
+    .modal-backdrop(ng-click="$ctrl.close()")
+    .modal-window
+        .modal-icon: .mdi.mdi-message-alert-outline
+        .modal-body.form: .modal-section.modal-section-pad
+            .text-center
+                .modal-heading(translate="modals.modal_voucher_deactivate.title")
+                .modal-subtitle(translate="modals.modal_voucher_deactivate.subtitle")
+                .modal-text(translate="modals.modal_voucher_deactivate.text")
+            form(ng-submit="$ctrl.form.submit()").form: .form-group
+                .form-label(translate="modals.modal_voucher_deactivate.label")
+                textarea.r-n(ng-model="$ctrl.deactivation_reason" placeholder="{{ 'modals.modal_voucher_deactivate.placeholder' | translate }}" ng-change="$ctrl.error = false").form-control
+                .form-error(ng-if="$ctrl.error" translate="modals.modal_voucher_deactivate.error")
+        
+        .modal-footer.text-center
+            button.button.button-default(ng-click="$ctrl.close()" translate="modals.modal_voucher_deactivate.buttons.cancel")
+            button.button.button-primary(ng-click="$ctrl.form.submit()" translate="modals.modal_voucher_deactivate.buttons.submit")
