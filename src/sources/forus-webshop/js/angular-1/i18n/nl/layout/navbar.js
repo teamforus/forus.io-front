@@ -15,7 +15,10 @@ module.exports = {
         },
         nijmegen: {
             funds:"Aanvragen",
-        }
+        },
+        waalwijk: {
+            funds: "Aanvragen",
+        },
     },
     buttons: {
         activate: "Activeren",

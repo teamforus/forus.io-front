@@ -68,6 +68,9 @@ module.exports = {
         potjeswijzer: {
             start_request: "Aanvragen"
         },
+        waalwijk: {
+            start_request: "Aanvragen"
+        },
         more: "Bekijk meer",
         start_request: "Activeren",
         is_applicable: "Activeer",

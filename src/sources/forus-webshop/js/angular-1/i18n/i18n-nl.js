@@ -51,7 +51,9 @@ module.exports = {
         winterswijk: 'Winterswijk',
         noordoostpolder: 'Meedoenpakket',
         groningen: 'Stadjerspas',
-        geertruidenberg: 'Geertruidenberg'
+        geertruidenberg: 'Geertruidenberg',
+        waalwijk: 'Waalwijk',
+        
     },
     languages: {
         en: 'English',
