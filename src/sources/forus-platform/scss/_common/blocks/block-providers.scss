@@ -5,7 +5,6 @@
 
     .provider-item {
         display: flex;
-        flex-wrap: wrap;
         flex-direction: column;
         position: relative;
         background: #fff;
@@ -17,7 +16,6 @@
         .provider-overview {
             display: flex;
             flex-direction: row;
-            padding: 20px;
         }
 
         .provider-media {
@@ -79,6 +77,7 @@
                     position: relative;
                     padding-left: 10px;
                     font: 600 13px/16px $bf;
+                    max-width: 100%;
                     color: #666;
 
                     &:before {
@@ -138,11 +137,6 @@
                     }
                 }
             }
-        }
-
-        .provider-funds {
-            max-width: 100%;
-            border-top: 1px solid #d2e6ff;
         }
 
         &:last-child {

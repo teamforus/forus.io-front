@@ -54,7 +54,8 @@ module.exports = {
         modal_transfer_organization_ownership: require('./nl/modals/modal-transfer-organization-ownership.pug.i18n'),
         modal_fund_criteria_description: require('./nl/modals/modal-fund-criteria-description.i18n'),
         danger_zone: {
-            remove_external_validators: require('./nl/modals/danger-zone/remove-external-validator')
+            remove_external_validators: require('./nl/modals/danger-zone/remove-external-validator'),
+            remove_fund_provider: require('./nl/modals/danger-zone/remove-fund-provider')
         },
     },
     // PAGES
@@ -522,12 +523,16 @@ module.exports = {
             no_business_type: "Geen organisatie type",
             join: "Aanmelding voor fonds",
             accept_budget: "Accepteer budget",
-            accept_all_offers: "Accepteer al het aanbod"
+            accept_all_offers: "Accepteer al het aanbod",
+            name: "Naam",
+            status: "Status",
+            options: "Opties",
         },
         buttons: {
             reject: "Weigeren",
             accept: "Accepteren",
             view_request: "Bekijk aanvraag",
+            view_products: "Bekijk aanbod",
             export_csv: "Exporteer als .CSV",
             export_xls: "Exporteer als .XLS",
         },

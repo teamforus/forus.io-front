@@ -109,8 +109,8 @@
                     .button.button-default.button-icon(ng-click="$ctrl.filters.show = !$ctrl.filters.show"): em.mdi.mdi-filter-outline
 
         //- Provider list
-        .block.block-providers: .provider-item(ng-repeat="providerOrganization in $ctrl.providerOrganizations.data")
-            .provider-overview
+        .block.block-providers: .provider-item.card(ng-repeat="providerOrganization in $ctrl.providerOrganizations.data")
+            .card-section: .provider-overview
                 .provider-media: img.provider-media-img(ng-src="{{ providerOrganization.logo.sizes.thumbnail || './assets/img/placeholders/organization-thumbnail.png' }}")
                 .provider-details
                     .provider-title(ng-bind="providerOrganization.name")
@@ -134,14 +134,17 @@
                     tr
                         th Fondsnaam
                         th Status
-                        th Opties
+                        th.th-narrow Opties
                     tr(ng-repeat="fund in providerOrganization.funds")
                         td(ng-bind="fund.name")
                         td: .tag.tag-sm(ng-class="'tag-' + (fund.active ? 'success' : 'warning')"   ng-bind="fund.active ? 'Geaccepteerd' : 'Wachtend'")  
-                        td.td-narrow.text-right
-                            a(ui-sref="fund-provider(fund.uiViewParams)").button.button-default.nowrap  
+                        td: .button-group.nowrap
+                            a(ui-sref="fund-provider(fund.uiViewParams)").button.button-default.button-sm
                                 em.mdi.mdi-eye-outline.icon-start
                                 | Bekijk aanbod
+
+                            button(ng-click="$ctrl.rejectApplication(fund)").button.button-danger.button-sm
+                                em.delete.mdi.mdi-trash-can-outline
 
         block-empty( 
             ng-if="$ctrl.providerOrganizations.data.length == 0"
