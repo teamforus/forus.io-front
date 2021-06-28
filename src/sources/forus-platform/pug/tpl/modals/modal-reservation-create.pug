@@ -76,13 +76,8 @@
                         .datalist-value.text-primary.text-right: strong(ng-bind="$ctrl.formProducts.product.price_locale")
 
         .modal-footer.text-center(ng-if="!$ctrl.showOverview")
-<<<<<<< HEAD
-            button.button.button-dark(type="button" ng-click="$ctrl.showVoucherForm()") Annuleren
-            button.button.button-primary(type="button" ng-click="$ctrl.showOverview = true") Bevestigen
-=======
             button.button.button-dark(type="button" ng-click="$ctrl.showVoucherForm($ctrl.form.values.number)") Annuleren
-            button.button.button-primary(type="button" ng-click="$ctrl.showOverview = true") Bevestig
->>>>>>> origin/epic.product-reservations
+            button.button.button-primary(type="button" ng-click="$ctrl.showOverview = true") Bevestigen
 
         .modal-footer.text-center(ng-if="$ctrl.showOverview")
             button.button.button-dark(type="$ctrl.showOverview" ng-click="$ctrl.showOverview = false") Annuleren
