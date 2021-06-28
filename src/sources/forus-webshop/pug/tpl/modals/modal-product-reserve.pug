@@ -31,15 +31,13 @@
                         .voucher-name(ng-bind="voucher.fund.name")
                         .voucher-organization(ng-bind="voucher.fund.organization.name")
                         .voucher-value(ng-if="voucher.fund.type === 'budget'" ng-bind="voucher.amount | currency_format")
-                        | {{ voucher.type }}
-                        | {{ voucher.address }}
 
                     .voucher-overview(ng-if="$ctrl.vouchers.length > 1")
-                        button.button.button-primary(ng-click="$ctrl.reserveProduct($ctrl.product, voucher)") Gebruik
+                        button.button.button-primary(ng-click="$ctrl.reserveProduct($ctrl.product, voucher)") Kies
 
             .button-group.flex-center
                 button.button.button-primary(
                     ng-if="$ctrl.vouchers.length === 1"
-                    ng-click="$ctrl.reserveProduct($ctrl.product, $ctrl.vouchers[0])") Gebruik
+                    ng-click="$ctrl.reserveProduct($ctrl.product, $ctrl.vouchers[0])") Bevestig
 
                 button.button.button-dark(ng-click="$ctrl.close()" i18n="modal.buttons.cancel")

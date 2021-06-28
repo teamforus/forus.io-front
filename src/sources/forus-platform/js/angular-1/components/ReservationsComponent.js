@@ -17,13 +17,13 @@ const ReservationsComponent = function(
         name: 'Alle'
     }, {
         key: 'pending',
-        name: 'Pending'
+        name: 'Wachtend'
     }, {
         key: 'accepted',
-        name: 'Accepted'
+        name: 'Geaccepteerd'
     }, {
         key: 'rejected',
-        name: 'Rejected'
+        name: 'Geweigerd'
     }];
 
     $ctrl.filters = {
@@ -62,7 +62,7 @@ const ReservationsComponent = function(
                 "U kunt de transactie binnen 14 dagen annuleren, daarna volgt de uitbetaling."
             ].join("\n"),
             text_align: 'center',
-            cancelButton: "Annuleer",
+            cancelButton: "Annuleren",
             confirmButton: "Bevestigen",
             onConfirm: () => {
                 ProductReservationService.accept($ctrl.organization.id, reservation.id).then(() => {
@@ -77,7 +77,7 @@ const ReservationsComponent = function(
         ModalService.open("dangerZone", {
             title: "Weet u zeker dat u de betaling wilt weigeren?",
             description_text: "Wanneer u de reservering weigert kunt u deze daarna niet meer accepteren.",
-            cancelButton: "Annuleer",
+            cancelButton: "Annuleren",
             confirmButton: "Bevestigen",
             onConfirm: () => {
                 ProductReservationService.reject($ctrl.organization.id, reservation.id).then(() => {

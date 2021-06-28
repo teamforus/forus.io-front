@@ -175,7 +175,7 @@
                 //- Enable product reservations
                 .row: .col.col-lg-9
                     .form-group.form-group-inline.tooltipped
-                        label.form-label Product reservations
+                        label.form-label Reserveringen
                         .form-offset
                             .checkbox
                                 input(
@@ -186,21 +186,21 @@
 
                                 label(for="reservation_enabled").checkbox-label
                                     .checkbox-box: em.mdi.mdi-check
-                                    | Allow product reservations
+                                    | Dit aanbod mag worden gereserveerd
 
                             .form-error(ng-repeat="error in $ctrl.form.errors.reservation_enabled" ng-bind="error")
 
-                        tooltip(text="'Lorem ipsum!'")
+                        tooltip(text="Een reservering kan gedaan worden via de webshop. Bij een reservaring wordt u na 14 dagen pas uitbetaald bij acceptatie")
 
                 //- Auto accept product reservations
                 .row: .col.col-lg-9(ng-if="$ctrl.form.values.reservation_enabled")
                     .form-group.form-group-inline.tooltipped
-                        label(for="reservation_policy").form-label Review policy
+                        label(for="reservation_policy").form-label Reserveringen accepteren
                         select(
                             ng-model="$ctrl.form.values.reservation_policy" 
                             ng-options="policy.value as policy.label for policy in $ctrl.reservationPolicies").form-control
                         .form-error(ng-repeat="error in $ctrl.form.errors.reservation_policy" ng-bind="error")
-                        tooltip(text="'Lorem ipsum!'")
+                        tooltip(text="Standaard is de globale instelling dat u de reservering handmatig kunt accepteren")
 
             //- Product category
             .card-section.card-section-primary: .row

@@ -44,14 +44,14 @@
 
     //- reservation refunded
     .reservation-overview(ng-if="!$dir.reservation.expired && $dir.reservation.state === 'canceled'")
-        .reservation-overview-status: .label.label-default.label-round Refunded
+        .reservation-overview-status: .label.label-default.label-round Terugbetaald
 
         .reservation-overview-item
             .reservation-overview-label Reserveringsnummer:
             .reservation-overview-value(ng-bind="'#' + $dir.reservation.code")
 
         .reservation-overview-item
-            .reservation-overview-label Refunded at:
+            .reservation-overview-label Terugbetaald op:
             .reservation-overview-value(ng-bind="$dir.reservation.canceled_at_locale")
 
     //- reservation expired

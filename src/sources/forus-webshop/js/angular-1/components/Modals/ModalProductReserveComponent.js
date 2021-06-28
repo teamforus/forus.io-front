@@ -9,7 +9,7 @@ const ModalProductReserveComponent = function(
         $ctrl.close();
 
         $state.go('reservations');
-        PushNotificationsService.success('Succes!', 'The product have been reserved.');
+        PushNotificationsService.success('Gelukt!', 'Het aanbod is gereserveerd!.');
     };
 
     $ctrl.onError = (res) => {

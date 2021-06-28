@@ -23,12 +23,12 @@
                 button.button.button-dark(ng-click="$ctrl.close()") Sluiten
 
         .modal-section(ng-if="$ctrl.reservation.state === 'pending'")
-            h2.title.text-center Are you sure you want to cancel your reservation?
+            h2.title.text-center Weet je zeker dat je de reservering wilt annuleren?
             .description
                 p.text-center 
-                    | You will be able to reserve the item again while it is still in stock.
+                    | Je kunt het aanbod na annuleren weer opnieuw reserveren zolang de voorraad strekt.
                     br
 
             .button-group.flex-center
-                button.button.button-primary(ng-click="$ctrl.onConfirm()") Confirm
-                button.button.button-dark(ng-click="$ctrl.close()") Cancel
+                button.button.button-dark(ng-click="$ctrl.close()") Annuleren
+                button.button.button-primary(ng-click="$ctrl.onConfirm()") Bevestigen

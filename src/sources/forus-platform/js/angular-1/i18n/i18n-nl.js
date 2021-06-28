@@ -1256,11 +1256,11 @@ module.exports = {
             state: "Status",
         },
         labels: {
-            number: "Number",
+            number: "Nummer",
             product: "Aanbod",
             price: "Bedrag",
             reserved_at: "Aangemaakt op",
-            description: "BeschrijvinG",
+            description: "Beschrijving",
             customer: "Gegevens",
             fund: "Fonds",
             status: "Status",

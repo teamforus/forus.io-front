@@ -77,11 +77,11 @@
 
         .modal-footer.text-center(ng-if="!$ctrl.showOverview")
             button.button.button-dark(type="button" ng-click="$ctrl.showVoucherForm()") Annuleren
-            button.button.button-primary(type="button" ng-click="$ctrl.showOverview = true") Bevestig
+            button.button.button-primary(type="button" ng-click="$ctrl.showOverview = true") Bevestigen
 
         .modal-footer.text-center(ng-if="$ctrl.showOverview")
             button.button.button-dark(type="$ctrl.showOverview" ng-click="$ctrl.showOverview = false") Annuleren
-            button.button.button-primary(ng-if="$ctrl.showOverview" type="submit") Bevestig
+            button.button.button-primary(ng-if="$ctrl.showOverview" type="submit") Bevestigen
 
     .modal-window(ng-if="$ctrl.reservation")
         .modal-body.modal-body-visible: .modal-section
@@ -99,5 +99,5 @@
                 br
 
         .modal-footer.text-center
-            button(type="button" ng-click="$ctrl.close()" role="button").button.button-primary Bevestig
+            button(type="button" ng-click="$ctrl.close()" role="button").button.button-primary Sluiten
     

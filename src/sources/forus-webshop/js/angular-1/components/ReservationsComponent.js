@@ -19,7 +19,7 @@ const ReservationsComponent = function(ProductReservationService) {
         name: 'Geannuleerd',
         value: 'rejected',
     }, {
-        name: 'Refunded',
+        name: 'Terugbetaald',
         value: 'canceled',
     }];
 
@@ -40,7 +40,7 @@ const ReservationsComponent = function(ProductReservationService) {
 
     $ctrl.$onInit = function() {
         $ctrl.states.unshift({
-            name: 'Selecteer state...',
+            name: 'Selecteer status...',
             value: null
         });
 
