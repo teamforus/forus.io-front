@@ -5844,6 +5844,10 @@ body {
             &:last-child {
                 border-bottom: none;
             }
+
+            &.switch-row-disabled {
+                cursor: default;
+            }
         }
     }
 

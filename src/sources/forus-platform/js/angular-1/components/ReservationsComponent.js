@@ -142,7 +142,7 @@ const ReservationsComponent = function(
     };
 
     $ctrl.uploadReservations = () => {
-        ModalService.open('reservationBatchCreate', {
+        ModalService.open('reservationUpload', {
             organization: $ctrl.organization,
             onCreated: () => $ctrl.onPageChange(),
         });

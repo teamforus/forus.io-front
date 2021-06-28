@@ -17,6 +17,10 @@
         .description {
             font-size: 17px;
             line-height: 22px;
+
+            a {
+                color: $color_primary;
+            }
         }
 
         .block.block-vouchers {

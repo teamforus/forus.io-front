@@ -1,11 +1,11 @@
-let FundProviderProductComponent = function(
+const FundProviderProductComponent = function(
     $stateParams,
     FundService,
     ModalService,
     FundProviderChatService,
     PushNotificationsService
 ) {
-    let $ctrl = this;
+    const $ctrl = this;
 
     $ctrl.disableProductItem = function(fundProvider, product) {
         FundService.stopActionConfirmationModal(() => {
@@ -79,15 +79,19 @@ let FundProviderProductComponent = function(
             $stateParams.product_id,
         ).then((res) => {
             $ctrl.product = res.data.data;
-            $ctrl.product.allowed = $ctrl.fundProvider.products.indexOf($ctrl.product.id) !== -1;
+            $ctrl.updateProductMeta();
         });
-    }
+    };
 
-    $ctrl.$onInit = function() {
-        $ctrl.fundProviderProductChat = $ctrl.fundProviderProductChats[0] || null;
+    $ctrl.updateProductMeta = () => {
         $ctrl.product.allowed = $ctrl.fundProvider.products.indexOf($ctrl.product.id) !== -1;
         $ctrl.product.approvedActionParams = { ...$stateParams };
         $ctrl.product.editParams = { ...$stateParams };
+    };
+
+    $ctrl.$onInit = function() {
+        $ctrl.fundProviderProductChat = $ctrl.fundProviderProductChats[0] || null;
+        $ctrl.updateProductMeta();
 
         if ($ctrl.product.deals_history && Array.isArray($ctrl.product.deals_history)) {
             $ctrl.product.deals_history = $ctrl.product.deals_history.map(deal => ({

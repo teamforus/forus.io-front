@@ -50,9 +50,11 @@
                                 | Subsidie actief 
                                 .mdi.mdi-close.icon-end(ng-click="$ctrl.disableProductItem($ctrl.fundProvider, product)")
                             .hidden
+
                         .flex.flex-center(ng-if="!product.is_available"): .flex-self-center
                             .tag.tag-text.nowrap Niet beschikbaar 
                             .hidden
+
                         a.button.button-primary.button-sm.nowrap(
                             ng-if="product.is_available && !product.allowed" 
                             ui-sref="fund-provider-product-subsidy-edit(product.subsidyEditParams)")
@@ -223,14 +225,17 @@
                             ui-sref="fund-provider-product-subsidy-edit(product.subsidyEditParams)")
                             em.mdi.mdi-play.icon-start
                             | Start subsidie
-                        div(ng-if="product.is_available && product.allowed")
-                            .tag.tag-success.nowrap
+
+                        .flex.flex-center(ng-if="product.is_available && product.allowed"): .flex-self-center
+                            .tag.tag-success.nowrap.flex
                                 | Subsidie actief 
                                 .mdi.mdi-close.icon-end(ng-click="$ctrl.disableProductItem($ctrl.fundProvider, product)")
                             .hidden
+
                         div(ng-if="!product.is_available")
                             .tag.tag-text.nowrap Niet beschikbaar 
                             .hidden
+
                         .button.button-icon.button-text.button-menu.active.pull-right(ng-click="$ctrl.toggleActions($event, product.id)")
                             em.mdi.mdi-dots-horizontal
                             .menu-dropdown(click-outside="$ctrl.onClickOutsideMenu($event)" ng-if="product.id === $ctrl.dropdownMenuItem")

@@ -11,24 +11,40 @@
         
         .modal-body.modal-body-padless.form
             .block.block-switch-table(scroll-end="$ctrl.loadMore()")
-                label(for=("option_{{ $index }}_enabled") ng-repeat="item in $ctrl.itemsShown").switch-row
+                label.switch-row(
+                    for="option_{{ $index }}_enabled" 
+                    ng-repeat="item in $ctrl.itemsShown" 
+                    ng-class="{'switch-row-disabled' : !($ctrl.enableToggles && $ctrl.itemsShown.length > 1)}")
+
                     .switch-label
                         em.mdi.mdi-alert-outline.text-warning.switch-key-icon
-                        | {{ item.value }}
+                        span(ng-bind="item.value")
                     
-                    .switch-input(ng-if="$ctrl.itemsShown.length > 1"): .flex-row
+                    .switch-input(ng-if="$ctrl.enableToggles && $ctrl.itemsShown.length > 1"): .flex-row
                         .flex-col.switch-input-label(
                             ng-class="{'switch-input-label-blink' : item.blink}"
                             ng-bind="item.model ? $ctrl.labels.label_on : $ctrl.labels.label_off")
                         .flex-col: .form-group.form-group-inline: .form-toggle
                             input(type="checkbox" id=("option_{{ $index }}_enabled") ng-model="item.model" ng-change="$ctrl.blink(item)")
-                            .form-toggle-inner: .toggle-input: .toggle-input-dot
-            
+                            .form-toggle-inner: .toggle-input: .toggle-input-dot            
 
         .modal-footer.text-center
-            .button-group: button.button.button-default.button-sm(ng-click="$ctrl.cancel()" ng-bind="$ctrl.labels.button_cancel || 'Annuleer'")
             .button-group.flex-grow
+                button.button.button-default.button-sm(
+                    ng-click="$ctrl.cancel()" 
+                    ng-bind="$ctrl.labels.button_cancel || 'Annuleer'")
+            
             .button-group
-                button.button.button-default.button-sm(ng-if="$ctrl.items.length > 1" ng-click="$ctrl.toggleAllOff()" ng-bind="$ctrl.labels.button_none || 'Alles overslaan'")
-                button.button.button-default.button-sm(ng-if="$ctrl.items.length > 1" ng-click="$ctrl.toggleAllOn()" ng-bind="$ctrl.labels.button_all || 'Ja op alles'")
-                button.button.button-primary.button-sm(ng-click="$ctrl.confirm()" ng-bind="$ctrl.labels.button_confirm || 'Bevestig'")
+                button.button.button-default.button-sm(
+                    ng-if="$ctrl.enableToggles && $ctrl.items.length > 1" 
+                    ng-click="$ctrl.toggleAllOff()" 
+                    ng-bind="$ctrl.labels.button_none || 'Alles overslaan'")
+
+                button.button.button-default.button-sm(
+                    ng-if="$ctrl.enableToggles && $ctrl.items.length > 1" 
+                    ng-click="$ctrl.toggleAllOn()" 
+                    ng-bind="$ctrl.labels.button_all || 'Ja op alles'")
+
+                button.button.button-primary.button-sm(
+                    ng-click="$ctrl.confirm()" 
+                    ng-bind="$ctrl.labels.button_confirm || 'Bevestig'")

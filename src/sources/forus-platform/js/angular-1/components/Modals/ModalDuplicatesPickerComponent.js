@@ -1,7 +1,5 @@
-let ModalDuplicatesPickerComponent = function(
-    $timeout
-) {
-    let $ctrl = this;
+const ModalDuplicatesPickerComponent = function($timeout) {
+    const $ctrl = this;
 
     $ctrl.per_page = 25;
     $ctrl.page = 1;
@@ -60,6 +58,7 @@ let ModalDuplicatesPickerComponent = function(
         $ctrl.page = 0;
         $ctrl.onConfirm = $ctrl.modal.scope.onConfirm || (() => {});
         $ctrl.onCancel = $ctrl.modal.scope.onCancel || (() => {});
+        $ctrl.enableToggles = typeof $ctrl.modal.scope.enableToggles != 'undefined' ? $ctrl.modal.scope.enableToggles : true;
         $ctrl.itemsShown = [];
         $ctrl.items = $ctrl.modal.scope.items;
 

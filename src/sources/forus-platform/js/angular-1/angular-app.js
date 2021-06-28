@@ -70,6 +70,7 @@ app.component('modalNotificationComponent', require('./components/Modals/ModalNo
 app.component('modalPhotoUploaderComponent', require('./components/Modals/ModalPhotoUploaderComponent'));
 app.component('modalVoucherCreateComponent', require('./components/Modals/ModalVoucherCreateComponent'));
 app.component('modalReservationCreateComponent', require('./components/Modals/ModalReservationCreateComponent'));
+app.component('modalReservationUploadComponent', require('./components/Modals/ModalReservationUploadComponent'));
 app.component('modalProductVoucherCreateComponent', require('./components/Modals/ModalProductVoucherCreateComponent'));
 app.component('modalVoucherQrCodeComponent', require('./components/Modals/ModalVoucherQrCodeComponent'));
 app.component('modalVouchersUploadComponent', require('./components/Modals/ModalVouchersUploadComponent'));

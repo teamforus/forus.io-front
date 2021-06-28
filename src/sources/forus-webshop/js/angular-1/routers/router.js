@@ -323,7 +323,8 @@ module.exports = ['$stateProvider', '$locationProvider', 'appConfigs', function(
             vouchers: ['AuthService', 'VoucherService', '$transition$', (
                 AuthService, VoucherService, $transition$
             ) => AuthService.hasCredentials() ? repackResponse(VoucherService.list({
-                product_id: $transition$.params().id,    
+                product_id: $transition$.params().id,
+                type: 'regular',
             })) : new Promise(resolve => resolve([]))],
             product: ['$transition$', 'ProductService', (
                 $transition$, ProductService

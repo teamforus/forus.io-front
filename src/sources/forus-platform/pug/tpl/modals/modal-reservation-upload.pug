@@ -1,0 +1,71 @@
+.modal.modal-animated.modal-loading(ng-class="[$ctrl.modal.scope.modalClass, $ctrl.modalClass, $ctrl.modal.loaded ? '' : 'modal-loading']")
+    .modal-backdrop(ng-click="$ctrl.close()")
+    .modal-window
+        a(ng-click="$ctrl.closeModal()" role="button").mdi.mdi-close.modal-close
+        .modal-header Upload CSV-bestand
+        .modal-body.form: .modal-section.form
+            .block.block-csv.condensed: .csv-inner
+                .csv-upload-btn(
+                    ng-show="$ctrl.csvParser.progress <= 1" 
+                    ng-click="$ctrl.csvParser.selectFile()")
+                    .csv-upload-icon: .mdi.mdi-upload
+                    .csv-upload-text
+                        | Upload .csv bestand
+                        br
+                        span Upload het .csv bestand
+
+                .button-group.flex-center
+                    button(
+                        ng-show="$ctrl.csvParser.progress <= 1" 
+                        ng-click="$ctrl.downloadExampleCsv()").button.button-default
+
+                        em.mdi.mdi-file-table-outline.icon-start 
+                        | Download upload voorbeeld
+
+                    button(
+                        ng-show="$ctrl.csvParser.progress <= 1" 
+                        ng-click="$ctrl.csvParser.selectFile()").button.button-primary
+
+                        em.mdi.mdi-upload.icon-start 
+                        | Upload .csv bestand
+
+                .csv-upload-progress(
+                    ng-show="$ctrl.csvParser.progress >= 2" 
+                    ng-class="{done: $ctrl.csvParser.progress == 3}")
+                    .csv-upload-icon: .mdi(
+                        ng-class="{'mdi-loading': $ctrl.csvParser.progress == 2, 'mdi-check': $ctrl.csvParser.progress == 3}")
+                    progress-bar(progress="$ctrl.progressBar" status="$scope.progressStatus")
+
+                .csv-upload-actions
+                    .csv-file(ng-if="$ctrl.csvParser.csvFile && $ctrl.csvParser.progress < 2")
+                        .block.block-file(ng-class="$ctrl.csvParser.isValid?'':'has-error'")
+                            .file-error.mdi.mdi-close-circle
+                            .file-name(ng-bind="$ctrl.csvParser.csvFile.name")
+                            .file-size(ng-bind="$ctrl.csvParser.csvFile.size | file_size")
+                            .file-remove.mdi.mdi-close(ng-click="$ctrl.reset()")
+
+                        //- Csv errors
+                        .text-left(ng-if="!$ctrl.csvParser.isValid")
+                            //- No `product_id` fields in the .csv file
+                            .form-error(ng-if="$ctrl.csvParser.errors.csvMissingProductIdFields")
+                                | The `product_id` field is missing on following lines: 
+                                | "{{ $ctrl.csvParser.errors.csvMissingProductIdFields }}".
+
+                            //- No `number` fields in the .csv file
+                            .form-error(ng-if="$ctrl.csvParser.errors.csvMissingNumberFields")
+                                | The `number` field is missing on following lines: 
+                                | "{{ $ctrl.csvParser.errors.csvMissingProductIdFields }}".
+
+                            //- The `number` fields in the .csv file is the sample value "000000000000" and has to be replaced
+                            .form-error(ng-if="$ctrl.csvParser.errors.csvSampleNumberFields")
+                                | The `number` field has the example value "000000000000" on following lines: 
+                                | "{{ $ctrl.csvParser.errors.csvSampleNumberFields }}".
+
+                    .text-center(ng-show="$ctrl.csvParser.progress == 1 && $ctrl.csvParser.isValid")
+                        button(
+                            ng-if="!$ctrl.loading"
+                            ng-click="$ctrl.csvParser.uploadToServer()"
+                            translate="csv_upload.buttons.upload").button.button-primary
+
+        .modal-footer.text-center
+            button.button.button-primary(ng-click="$ctrl.closeModal()" translate="modal_funds_add.buttons.close" id="close")

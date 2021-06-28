@@ -415,7 +415,7 @@ let ModalVouchersUploadComponent = function(
         } else {
             FileService.downloadFile(
                 'product_voucher_upload_sample.csv',
-                VoucherService.sampleCSVProuctVoucher(
+                VoucherService.sampleCSVProductVoucher(
                     $ctrl.productsIds[0] || null,
                     $ctrl.fund.end_date
                 )

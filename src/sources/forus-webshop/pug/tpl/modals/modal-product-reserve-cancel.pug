@@ -16,7 +16,10 @@
                     | Deze reservering is al door de aanbieder geaccepteerd. 
                     | Wil je deze reservering annuleren? Neem dan binnen veertien dagen na reservering contact op met de aanbieder.
                 p.text-center
-                    strong Neem contact op met de {{ $ctrl.reservation.product.organization.name }}!
+                    strong 
+                        | Neem contact op met de 
+                        a(target="_blank" ui-sref="provider($ctrl.reservation.product.organization)" ng-bind="$ctrl.reservation.product.organization.name")
+                        |!
                     br
 
             .button-group.flex-center
