@@ -18,7 +18,7 @@
     "@babel/polyfill": "7.12.1",
     "@babel/preset-env": "7.13.10",
     "babelify": "10.0.0",
-    "browser-sync": "2.26.14",
+    "browser-sync": "2.27.4",
     "browserify": "17.0.0",
     "colors": "1.4.0",
     "compression": "1.7.4",
