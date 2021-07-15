@@ -56,7 +56,8 @@ module.exports = {
         physical_card: {
             title: 'Activeer mijn pas',
             buttons: {
-                reactivate: 'Activeer'
+                reactivate: 'Activeer',
+                lost_pass: 'Ik ben mijn pas kwijt'
             }
         },
         share_voucher: {

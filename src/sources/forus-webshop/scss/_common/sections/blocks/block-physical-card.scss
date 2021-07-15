@@ -36,6 +36,11 @@
             color: $tc;
             margin: 0 0 10px;
         }
+
+        .block-card-code {
+            font: 700 18px/21px $bf;
+            color: $tc;
+        }
     }
 
     .block-card-actions {
@@ -79,6 +84,11 @@
 
             .block-card-description {
                 font: 600 11px/18px $bf;
+                margin: 0 0 20px;
+            }
+
+            .block-card-code {
+                font: 700 13px/19px $bf;
                 margin: 0 0 20px;
             }
         }

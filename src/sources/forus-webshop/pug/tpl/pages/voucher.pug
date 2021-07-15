@@ -5,8 +5,8 @@ main(id="main-content")
         .block.block-breadcrumbs.hide-sm
             a(ui-sref="home").breadcrumb-item Home
             a(ui-sref="vouchers").breadcrumb-item Mijn tegoeden
-            .breadcrumb-item.active(ng-if="!$ctrl.voucherCard.product") {{ $ctrl.voucherCard.title }}
-            .breadcrumb-item.active(ng-if="$ctrl.voucherCard.product") {{ $ctrl.voucherCard.title }}
+            .breadcrumb-item.active(ng-if="!$ctrl.voucher.physical_card") {{ $ctrl.voucherCard.title }}
+            .breadcrumb-item.active(ng-if="$ctrl.voucher.physical_card") Uw {{ $ctrl.voucherCard.title }} \#{{ $ctrl.voucher.physical_card.code }}
 
         .block.block-voucher(ng-if="$ctrl.voucherCanUse")
             h1.sr-only Jouw tegoed
@@ -76,13 +76,7 @@ main(id="main-content")
                                 .action-item-icon
                                     em.mdi.mdi-card-bulleted-outline
                                     //- .action-item-tooltip(i18n="voucher.voucher_card.footer.tooltips.share")
-                                .action-item-name Activeer mijn pas                            
-                            .action-col(ng-if="$ctrl.voucher.physical_card"): .action-item(
-                                ng-click="$ctrl.unlinkPhysicalCard($ctrl.voucher)")
-                                .action-item-icon
-                                    em.mdi.mdi-card-bulleted-outline
-                                    //- .action-item-tooltip(i18n="voucher.voucher_card.footer.tooltips.share")
-                                .action-item-name Ik ben mijn pas kwijt                      
+                                .action-item-name Activeer mijn pas                      
                             .action-col(ng-if="$ctrl.voucherCard.product && $root.appConfigs.flags.shareProducts"): .action-item(
                                 ng-click="$ctrl.shareVoucher($ctrl.voucher)")
                                 .action-item-icon
@@ -136,6 +130,14 @@ main(id="main-content")
                 i18n="voucher.physical_card.buttons.reactivate" 
                 ng-click="$ctrl.usePhysicalCard($ctrl.voucher, 'card_code')") 
             //-.block-card-close.mdi.mdi-close(ng-click="$ctrl.dismissPhysicalCard()")
+
+        .block.block-physical-cards(ng-if="$ctrl.voucher.physical_card")
+            .block-card-logo: img(src="./assets/img/icon-physical-cards/icon-physical-cards-preview-vertical.png" alt="Fysieke pas: '{{$ctrl.voucherCard.title}}'")
+            .block-card-details 
+                .block-card-code Pasnummer: {{ $ctrl.voucher.physical_card.code }}
+            .block-card-actions: .button.button-light(
+                i18n="voucher.physical_card.buttons.lost_pass" 
+                ng-click="$ctrl.unlinkPhysicalCard($ctrl.voucher)")  
 
         .block.block-transactions(ng-if="!$ctrl.voucherCard.product && ($ctrl.voucherCard.transactions.length > 0 || $ctrl.voucher.expired)")
             .transactions-header: h2.transactions-title {{ "voucher.labels.transactions" | translate }} #[span(ng-if="$ctrl.voucher.expired").text-strong-half - Verlopen op {{ $ctrl.voucherCard.last_active_day_locale }}]
