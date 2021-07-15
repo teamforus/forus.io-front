@@ -803,6 +803,28 @@ module.exports = (core) => {
         return platform;
     });
 
+    core.editPlatform('webshop_waalwijk', (platform) => {
+        platform.setEnvData({
+            api_url: apiUrl,
+            client_key: 'waalwijk',
+            client_type: 'webshop',
+            log_out_time: false,
+            flags: {
+                logoExtension: '.png',
+                accessibilityPage: false,
+            },
+            sessions: sessions,
+        });
+
+        platform.editTask('js', (task) => {
+            task.minify = minify;
+            task.sourcemap = sourcemap;
+            return task;
+        });
+
+        return platform;
+    });
+
     // Config meapp landings
     core.editPlatform('website', (platform) => {
         platform.setEnvData({

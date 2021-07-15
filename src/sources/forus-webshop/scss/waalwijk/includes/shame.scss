@@ -1,0 +1,28 @@
+
+.block.block-footer .footer-nav .footer-nav-item a {
+    font: 700 12px/24px $bf;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 1000px) {
+    .block.block-footer .footer-nav .footer-nav-item a {
+        font: 700 12px/24px $bf;
+        color: #ffffff;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .block.block-footer .footer-nav .footer-nav-item a {
+        font: 700 14px/24px $bf;
+        color: #ffffff;
+    }
+}
+.block {
+    &.block-copyrights{
+        .links{
+            a {
+                color: #ffffff;
+            }
+        } 
+    }
+}
