@@ -1,6 +1,6 @@
 ### STAGE 1: Build ###    
 # We label our stage as 'builder'
-FROM node:13-alpine as builder
+FROM node:16-alpine as builder
 
 RUN apk update \
     && apk --no-cache --virtual build-dependencies add \
