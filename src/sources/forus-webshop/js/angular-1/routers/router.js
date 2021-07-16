@@ -929,14 +929,12 @@ module.exports = ['$stateProvider', '$locationProvider', 'appConfigs', function(
         data: {
             token: null
         },
-        controller: ['$rootScope', '$state', 'IdentityService', 'CredentialsService', (
-            $rootScope, $state, IdentityService, CredentialsService
+        controller: ['$rootScope', '$state', 'IdentityService', 'CredentialsService', 'PushNotificationsService', (
+            $rootScope, $state, IdentityService, CredentialsService, PushNotificationsService
         ) => {
-            let target = $state.params.target || '';
+            const target = $state.params.target || '';
 
-            IdentityService.exchangeConfirmationToken(
-                $state.params.token
-            ).then(function(res) {
+            IdentityService.exchangeConfirmationToken($state.params.token).then(function(res) {
                 CredentialsService.set(res.data.access_token);
                 $rootScope.loadAuthUser();
 
@@ -947,8 +945,11 @@ module.exports = ['$stateProvider', '$locationProvider', 'appConfigs', function(
                         });
                     }
                 }
-            }, () => {
-                alert("Deze link is reeds gebruikt of ongeldig.");
+            }, (res) => {
+                PushNotificationsService.danger(res.data.message, "Deze link is reeds gebruikt of ongeldig.", 'close', {
+                    timeout: 8000,
+                });
+
                 $state.go('home');
             });
         }]
