@@ -1,4 +1,4 @@
-let MarkdownDirective = function($scope, $element, $timeout, ModalService) {
+const MarkdownDirective = function($scope, $element, $timeout, ModalService) {
     const $theEditor = $($element.find('[editor]')[0]);
 
     const getCustomLink = (type, values) => {
@@ -168,7 +168,7 @@ let MarkdownDirective = function($scope, $element, $timeout, ModalService) {
             ['style', ['style']],
         ], ...($scope.allowAlignment ? [
             ['align', ['cmsBlockAlign']],
-        ]: []), ...[
+        ] : []), ...[
             ['font', ['bold', 'italic', 'clear']],
             ['para', ['ol', 'ul']],
         ], ...($scope.extendedOptions ? [
@@ -201,8 +201,12 @@ let MarkdownDirective = function($scope, $element, $timeout, ModalService) {
                     }
                 });
 
+                const markdown = turndownService.turndown(contents).split("\n");
+
                 $scope.value = contents;
-                $scope.ngModel = turndownService.turndown(contents);
+                $scope.ngModel = markdown.map((line, index) => {
+                    return ((index != 0) && (markdown[index - 1] === '') && (line.trim() === '')) ? "&nbsp;  " : line;
+                }).join("\n");
             },
             onPaste: function(e) {
                 var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
